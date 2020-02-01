@@ -1,0 +1,68 @@
+\chapter{Běžně používané sběrnice}
+V oboru amatérské stavby robotů se v praxi používá několik sběrnic a protokolů pro získávání dat.
+\begin{itemize}
+	\item I$^{2}$C 
+	\item UART
+		\begin{itemize}
+			\item RS-232
+			\item RS-485
+		\end{itemize}
+	\item SPI
+	\item 1-Wire
+	\item Nesběrnicová komunikace
+\end{itemize}
+
+\section{I$^{2}$C}
+Snad nejpoužívanější je sběrnice I$^{2}$C,
+také známá jako Inter-Intergrated Circuit
+\footnote{ Protože je značka I$^{2}$C chráněna, používali ostatní výrobci název TWI, jedná se o prakticky stejnou sběrnici, pouze pod jiným názvem.}.
+Tato sběrnice byla vyvinuta firmou Philips, primárně pro připojení periferií, které nevyžadovali vysoké komunikační rychlosti.
+Sběrnice podporuje jak multi-master tak multi-slave.
+Běžná rychlost je 100kbit/s, ve Fast modu je 400kbit/s. Novější revize pak umožňují až 5 Mbit/s, s touto verzí však nemusí být kompatibilní starší zařízení.
+I$^{2}$C používa 7-bitovou adresu, což teoreticky znamená, že je na každou sběrnici možno provozovat až 127 zařízení, prakticky je toto číslo značně nižší.
+Maximální délka sběrnice je 1 metr na 100k Baudech, sběrnice však nebyla designovaná na provozu po kabelu, jak ji používá většina amatérských nadšenců.\cite{https://www.nxp.com/docs/en/user-guide/UM10204.pdf}
+
+\begin{table}[]
+	\caption{Shrnutí:}
+	\centering
+	\begin{tabular}{|l|l|l|l|l|} \hline
+		Maximální počet zařízení & 127   \\ \hline
+		Maximální délka & 1 metr  \\ \hline
+		Používanost & 5/5   \\ \hline
+		Běžná rychlost & 100kbit/s \\ \hline
+		Maximální teoretická rychlost &  5Mbit/s  \\ \hline
+		Minimální počet vodičů & 3(SDA, SCL, GND) \\ \hline
+	\end{tabular}
+\end{table}
+
+
+
+\section{UART}
+Další hojně používanou sběrnicí je UART, mezi amatérskou komunitou znám též jako sériová linka.
+UART ve skutečnosti není sběrnice jako taková, jedná se spíše o něco mezi sběrnicí a protokolem.
+Nejběžněji použiváné sběrnice pro UART jsou:
+\subsection{RS-232} % (fold)
+\label{sub:RS-232}
+	RS-232 je implementace UART
+% subsection RS-232 (end)
+\subsection{RS-485} % (fold)
+\label{sub:RS-485}
+
+% subsection RS-485 (end)
+
+% \section{Musíme si dokonale promyslet obsah}
+% Jakmile víme, co chceme říci a komu, musíme si rozvrhnout látku.
+% Ideální je takové rozvržení, které tvoří logicky přesný a psychologicky stravitelný celek, ve kterém je pro všechno místo a jehož jednotlivé části do sebe přesně zapadají.
+% Jsou jasné všechny souvislosti a je zřejmé, co kam patří.
+
+% Abychom tohoto cíle dosáhli, musíme pečlivě organizovat látku.
+% Rozhodneme, co budou hlavní kapitoly, co podkapitoly a jaké jsou mezi nimi vztahy.
+% Diagramem takové organizace je graf, který je velmi podobný stromu, ale ne řetězci.
+% Při organizaci látky je stejně důležitá otázka, co do osnovy zahrnout, jako otázka, co z~ní vypustit.
+% Příliš mnoho podrobností může čtenáře právě tak odradit jako žádné detaily.
+
+% \section{Musíme začít psát strukturovaně}
+% Máme-li tedy myšlenku, představu o~budoucím čtenáři, cíl a osnovu textu, můžeme začít psát.
+% Při psaní prvního konceptu se snažíme zaznamenat všechny své myšlenky a názory vztahující se k~jednotlivým kapitolám a podkapitolám.
+% Každou myšlenku musíme vysvětlit, popsat a prokázat.
+% Hlavní myšlenku má vždy vyjadřovat hlavní věta a nikoliv věta vedlejší.
