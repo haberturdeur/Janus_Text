@@ -1,0 +1,44 @@
+\chapter{Volba parametrů}
+\section{Sběrnice}
+Pro svou prácí jsem zvolil sběrnici RS-485.
+Hlavní důvody pro toto rozhodnutí jsou:
+\begin{itemize}
+    \item Nezarušitelnost
+    \item Počet zařízení
+    \item Počet vodičů
+    \item Celková robustnost
+\end{itemize}
+
+\section{Protokol}
+Na sběrnici RS-485 se nabýzela možnost použít protokol Modbus, což je průmyslový standart.
+Byla to originálně i moje volba, od jeho použití mě odradila jeho komplexnost.
+Rozhodl jsem se proto vytvořit vlastní protokol pracovně pojmenovaný Janus protocol.
+
+\section{Zpracované senzory}
+Senzory plánované pro implementaci do této sady zahrnují:
+\begin{itemize}
+    \item Všesměrový ultrazvokový senzory
+    \item Sběrač pro ultrazvukové senzory HC-SR04
+    \item Senzor pro Line follower
+    \item RGB sensor
+    
+\end{itemize}
+Kromě senzorů mají být součástí sady i další jednotky:
+\begin{itemize}
+    \item Battery pack - inteligentní baterie
+    \item Co-processing unit - přídavná výpočetní jednotka
+    \item Rozbočovač - V případě potřeby možnost rozšířit sběrnici o více zařízení
+    \item Buffer - Kombinace co-processing unit a rozbočovače
+\end{itemize}
+\section{Procesory}
+
+Rozhodl jsem se použít pro všechny senzory i řídící jednotku procesory z řady ESP32.
+Některé z důvodů:
+\begin{itemize}
+    \item Build-in podpora pro RS-485 přímo v UART driveru
+    \item Kompletní podpora C++v14 na rozdíl od běžně používaných ATMEGA čipů
+    \item Kompatibilita se spoustou rozhraní a sběrnic - může sloužit jako převodník mezi ostatními sběrnicemi a Janus protocol
+    \item OTA - možnost nahrávání programu přes internet\footnote{Snaha o co nejjednoduší dodatečné opravy systému, kdy si senzory budou sami schopny dostahovat nejnovější firmware, a na obalu nebudou muset být vyvedené programovací konektory.}
+    \item WiFi a Bluetooth - V případě nutnosti bezdrátové komunikace
+    \item Kompatibilita s Arduino \footnote{Přestože samotný kód protokolu nevyžaduje Arduino a je postaven čistě na ESP-IDF, je Arduino prostředí pro mnoho začátečníků přijemnější pro práci než většina ostatních. Jeho jednoduchost a kmpatibilita s jinými čipy však může zásadně limitovat jeho funkce, proto není obsluha protokolu napsaná právně v něm.}
+\end{itemize}
