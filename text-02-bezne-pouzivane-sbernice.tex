@@ -1,12 +1,12 @@
 \chapter{Běžně používané sběrnice}
 V oboru amatérské stavby robotů se v praxi používá několik sběrnic a protokolů pro získávání dat.
 \begin{itemize}
-	\item I$^{2}$C 
+	\item I$^{2}$C
 	\item UART
-		\begin{itemize}
-			\item RS-232
-			\item RS-485
-		\end{itemize}
+	      \begin{itemize}
+		      \item RS-232
+		      \item RS-485
+	      \end{itemize}
 	\item SPI
 	\item 1-Wire
 	\item Nesběrnicová komunikace
@@ -19,19 +19,20 @@ také známá jako Inter-Intergrated Circuit
 Tato sběrnice byla vyvinuta firmou Philips, primárně pro připojení periferií, které nevyžadovali vysoké komunikační rychlosti.
 Sběrnice podporuje jak multi-master tak multi-slave.
 Běžná rychlost je 100kbit/s, ve Fast modu je 400kbit/s. Novější revize pak umožňují až 5 Mbit/s, s touto verzí však nemusí být kompatibilní starší zařízení.
-I$^{2}$C používa 7-bitovou adresu, což teoreticky znamená, že je na každou sběrnici možno provozovat až 127 zařízení, prakticky je toto číslo značně nižší.
-Maximální délka sběrnice je 1 metr na 100k Baudech, sběrnice však nebyla designovaná na provozu po kabelu, jak ji používá většina amatérských nadšenců.\cite{https://www.nxp.com/docs/en/user-guide/UM10204.pdf}
+I$^{2}$C používá 7-bitovou adresu, což teoreticky znamená, že je na každou sběrnici možno provozovat až 127 zařízení, prakticky je toto číslo značně nižší.
+I$^{2}$C využívá TTL.
+Maximální délka sběrnice je 1 metr na 100k Baudech, sběrnice však nebyla designovaná na provozu po kabelu, jak ji používá většina amatérských nadšenců.\cite{nxp:UM10204}
 
 \begin{table}[]
-	\caption{Shrnutí:}
+	\caption{Shrnutí I$^{2}$C:}
 	\centering
 	\begin{tabular}{|l|l|l|l|l|} \hline
-		Maximální počet zařízení & 127   \\ \hline
-		Maximální délka & 1 metr  \\ \hline
-		Používanost & 5/5   \\ \hline
-		Běžná rychlost & 100kbit/s \\ \hline
-		Maximální teoretická rychlost &  5Mbit/s  \\ \hline
-		Minimální počet vodičů & 3(SDA, SCL, GND) \\ \hline
+		Maximální počet zařízení      & 127              \\ \hline
+		Maximální délka               & 1 metr           \\ \hline
+		Používanost                   & 5/5              \\ \hline
+		Běžná rychlost                & 100kbit/s        \\ \hline
+		Maximální teoretická rychlost & 5Mbit/s          \\ \hline
+		Minimální počet vodičů        & 3(SDA, SCL, GND) \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -40,29 +41,50 @@ Maximální délka sběrnice je 1 metr na 100k Baudech, sběrnice však nebyla d
 \section{UART}
 Další hojně používanou sběrnicí je UART, mezi amatérskou komunitou znám též jako sériová linka.
 UART ve skutečnosti není sběrnice jako taková, jedná se spíše o něco mezi sběrnicí a protokolem.
+UART jako takový definuje pouze posílaná data(0 a 1), nikoli však způsob jejich posílání či napěťové úrovně sběrnice.
+O to se starají právě jednotlivé implementace/sběrnice.
+\footnote{I přesto se dá UART používat sám o sobě na TTL(Transistor-Transistor-Logic), v tom případě je definice napěťových úrovní ponechána jednotlivým zařízením, což může způsobit vzájemnou nekompatibilitu.}
 Nejběžněji použiváné sběrnice pro UART jsou:
 \subsection{RS-232} % (fold)
-\label{sub:RS-232}
-	RS-232 je implementace UART
+RS-232 je implementace UART.
+Používá napěťové úrovně +15V až +5V pro logickou 1 a -5V až -15V pro logickou 0, toto platí pro vysílací část.
+Přijímací část přidává 2V histerezi kvůli rušení, znamenaje +15V až +3V pro logickou 1 a -3V až -15V pro logickou 0.
+RS-232 potřebuje společnou GND.
+\cite{RS-232} 
 % subsection RS-232 (end)
 \subsection{RS-485} % (fold)
-\label{sub:RS-485}
-
+RS-485 je další implementace.
+Nepožívá ale napěťové úrovně oproti společné GND, nýbrž rozdíl napětí na linkách A a B, ten musí být alespoň 200mV.
+To způsobuje několik věcí.
+Zaprvé, pokud vedou obě linky podél sebe, nejlépe jsou kroucené, je prakticky nemožné komunikaci zarušit, což je v prostředí motorů na robotu značná výhoda.
+Zadruhé, není potřeba společná GND.
+Zatřetí, pro plný duplexní mód(jedna linka na vysílání a jedna na přijímaní) je potřeba dvounásobný počet vodičů, tedy 4.
+V závislosti na použitém převodníku UART<->RS-485 může být počet zařízení na sběrnici 32, nebo až 128.
+\cite{RS-485}
 % subsection RS-485 (end)
 
-% \section{Musíme si dokonale promyslet obsah}
-% Jakmile víme, co chceme říci a komu, musíme si rozvrhnout látku.
-% Ideální je takové rozvržení, které tvoří logicky přesný a psychologicky stravitelný celek, ve kterém je pro všechno místo a jehož jednotlivé části do sebe přesně zapadají.
-% Jsou jasné všechny souvislosti a je zřejmé, co kam patří.
+\section{SPI}
+SPI, neboli Serial Peripherial Interface je dvoukanálová synchroní multislave sběrnice.
+Pro komunikaci využívá 4 vodiče, MOSI(Master Output Slave Input), neboli výstup z master a vstup do slave, MISO(Master Input Slave Output), neboli výstup ze slave a vstup do master, SCK neboli hodinový signál, a SS(Slave Select) tímto pinem nastavujeme který slave je momentálně aktivní, tudíž na straně masteru může být počet použitých pinů větší, 3+počet slave zařírzení.
+Další možná konfigurace je tzv. Daisy-chain, kdy je  MOSI masteru připojeno na MOSI prvního slave zařízení a MISO prvního slave zařízení je připojeno na MOSI dalšího slave zařízení, až MISO posledního slave zařízení je připojeno na MISO masteru.
+Tato konfigurace poskytuje snížení počtu vodičů, zároveň ale snižuje i komunikační rychlost, informace od prvního slave zařízení musí obejít celý kruh, než se dostanou zpět k master zařízení.
+Nespornou výhodou SPI je její rychlost.
+Maximální rychlost není definovaná, aplikace běžně jdou až 10Mb/s.
+Nevýhodou může být velký počet vodičů.
+\cite{nxp:AN2847}
 
-% Abychom tohoto cíle dosáhli, musíme pečlivě organizovat látku.
-% Rozhodneme, co budou hlavní kapitoly, co podkapitoly a jaké jsou mezi nimi vztahy.
-% Diagramem takové organizace je graf, který je velmi podobný stromu, ale ne řetězci.
-% Při organizaci látky je stejně důležitá otázka, co do osnovy zahrnout, jako otázka, co z~ní vypustit.
-% Příliš mnoho podrobností může čtenáře právě tak odradit jako žádné detaily.
+\section{1-Wire}
+1-Wire je sběrnice, která jak již její název napovídá potřebuje pouze jednu linku.
+K tomu potřebuje ještě společnou GND, ale i tak to jsou pouze 2 linky, které obsáhnou napájení i komunikaci.\footnote{Sběrnici je možno provozovat i na 3 linkovém módu.}
+Této typologie se využívá třeba u kontaktních přístupových čipů.
+Sběrnice je také poměrně známá pro svůj CRC součet, který umožňuje kontrolu odeslaných dat.
+1-Wire je kompatibilní s TTL.
+Každé zařízení na sběrnici má unikátní neměnnou adresu.
+\cite{one-wire}
 
-% \section{Musíme začít psát strukturovaně}
-% Máme-li tedy myšlenku, představu o~budoucím čtenáři, cíl a osnovu textu, můžeme začít psát.
-% Při psaní prvního konceptu se snažíme zaznamenat všechny své myšlenky a názory vztahující se k~jednotlivým kapitolám a podkapitolám.
-% Každou myšlenku musíme vysvětlit, popsat a prokázat.
-% Hlavní myšlenku má vždy vyjadřovat hlavní věta a nikoliv věta vedlejší.
+\section{Nesběrnicová komunikace}
+Některé senzory nepotřebují posílat velké množství dat, a proto může být lepší nepoužít sběrnici. 
+Příkladem takového senzoru může být třeba obyčejné tlačítko.
+Některé senzory zmíněné v další kapitole také používájí tento způsob předání dat.
+Hlavní problém tohoto řešení je hlavně náročnost na čas procesoru a počet vodičů.
+

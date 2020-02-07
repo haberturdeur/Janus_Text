@@ -174,16 +174,16 @@
 	\section*{Poděkování}
 	{#1}
 
-	\vspace{\baselineskip}
-	\noindent Tato práce byla provedena za finanční podpory Jihomoravského kraje.
-	\begin{figure}[h]
-	\begin{subfigure}{.5\textwidth}
-  		\includegraphics[width=.8\linewidth]{template/jmk.png}
-	\end{subfigure}%
-	\begin{subfigure}{.5\textwidth}
-  		\includegraphics[width=.8\linewidth]{template/jcmm.png}
-	\end{subfigure}
-	\end{figure}
+	% \vspace{\baselineskip}
+	% \noindent Tato práce byla provedena za finanční podpory Jihomoravského kraje.
+	% \begin{figure}[h]
+	% \begin{subfigure}{.5\textwidth}
+  	% 	\includegraphics[width=.8\linewidth]{template/jmk.png}
+	% \end{subfigure}%
+	% \begin{subfigure}{.5\textwidth}
+  	% 	\includegraphics[width=.8\linewidth]{template/jcmm.png}
+	% \end{subfigure}
+	% \end{figure}
 
 	\newpage
 	\pagestyle{plain}
