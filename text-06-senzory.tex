@@ -1,6 +1,6 @@
 \chapter{Senzory}
 Ke dni odevzdání je funkční všesměrový ultrazvukový senzror, a to ve dvou iteracích.
-Dále je funkční také sběrač ultrazvukových senzorů
+Dále je funkční také sběrač ultrazvukových senzorů.
 
 \section{Všesměrový ultrazvukový senzor}
 Obě iterace tohoto senzoru používají 8 senzorů HC-SR04 uspořádaných do osmiúhelníku.
@@ -40,4 +40,10 @@ Všechny HC-SR04 mají znefunkčněný vysílač.
 Když procesor přijme z IR přijímačů signál započne měřit čas a odešle vysílací puls do HC-SR04, poté již jen čeká než se změní hodnota některého z Echo pinů na HC-SR04.
 V okamžiku kdy se tak stane procesor ukončí měření času a zaznamená si ze kterého HC-SR04 změna přišla.
 Díky tomu je schopen senzor zjistit nejen vzdálenost od vysílače, ale i přibližný směr k němu.
-Cokoliv co přijde po první změně nás nezajímá, protože se jedná o náhodný odraz od prostředí. 
+Cokoliv co přijde po první změně nás nezajímá, protože se jedná o náhodný odraz od prostředí.
+
+\section{Sběrač ultrazvukových senzorů}
+Tento senzor používá řídící elektroniku singleplayerového řešení všesměrové senzoru.
+Hlavní rozdíl oproti němu je možnost libovolného umístění senzorů HC-SR04 na robota.
+Důvod tvorby tohoto senzoru je časová náročnost měření jednotlivých senzorů, která můžu razantně ovlivnit reakční dobu robota.
+Senzor je schopen po softwarovém zapnutí této funkce odesílat interupt signál při překročení meze pro některý z HC-SR04.
