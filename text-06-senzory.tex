@@ -1,0 +1,43 @@
+\chapter{Senzory}
+Ke dni odevzdání je funkční všesměrový ultrazvukový senzror, a to ve dvou iteracích.
+Dále je funkční také sběrač ultrazvukových senzorů
+
+\section{Všesměrový ultrazvukový senzor}
+Obě iterace tohoto senzoru používají 8 senzorů HC-SR04 uspořádaných do osmiúhelníku.
+Hlavní rozdíl mezi nimi je v možnosnosti použítí.
+Zatímco první iterace je nachystaná pro singleplayerové disciplíny, druhá iterace vyžaduje buď soupeře na hřišti, nebo možnost umístění majáčků okolo hřiště, na Pražském robotickém dni tomuto odpovídá pouze disciplína Roadside Assistance Advanced.
+
+\subsection{Singleplayerové řešení}
+Jedná se o osm senzorů HC-SR04 uspořádaných do osmiúhelníku, všechny senzory jsou svedeny do procesoru, nak, aby se každý dal číst a aktivovat samostatně.
+Senzor musí být na robotovi uchycen nad úrovní všech ostatních jednotek, potřebuje mít 360$^{\circ}$ výhled.
+Druhý požadavek na použití tohoto senzoru je výškový rozdíl měřených objektů a objektů které se na hřišti nachází, ale vzdálenost od nich k robotovi měřit nechceme.
+Senzor musí být umístěn tak aby jeho vrchní plocha byla maximámálně na úrovni vrchní plochy měřených objektů, ale zároveň tak aby při měření nezabírali nechtěné objekty, to už je bohužel potřeba vyzkoušet na každém hřišti samostatně.
+
+\subsection{Více majáčkové řešení}
+Pracovním názmen také Janus omni-ultra.
+Tento senzor, nebo lépe řečeno uspořádání, potřebuje ke svému fungování dvě stanice.
+Jedna ze stanic je umístěna na robotovi, nazveme ji přijímačem.
+Druhá stanice je umístěna na soupeřovi, případně na pozici pro majáček, nazme ji vysílačem.
+Obě stanice jsou založeny na singleplayerovém řešení.
+
+\subsubsection{Vysílač}
+Vysílač sestává ze singleplayerové verze, kruhu synchronizačních IR LED, baterie a řídící desky.
+Jako baterie je zde použit dvoučlánek baterií 18650.
+Řídící deska sestává ze dvou DPS umístěných nad sebou, propojených šestipinovým konektorem.
+
+Na horní desce se náchází procesor a náležitosti potřebné k jeho fungování.
+Jako procesor je zde zvolen ATMEGA328, není zde totiž potřeba komunikace po Janus protocol.
+Pro toto použí je ATMEGA dostačující.
+Úkolem procesoru je poslat na 40kHz modulovaný puls ze synchronizačních IR LED společně s vyslání ultrazvukové signálu ze všech HC-SR04 naráz, není třeba měřit návratový čas, protože na vysílači nás nezajímá.
+Procesor má zároveň dvě signalizační LED a umožňuje měření baterií, v případě vybítí signalizuje tuto skutečnost.
+
+Na spodní desce se nachází kruh synchronizačních IR LED, spojených na jeden tranzistor.
+Dále se zde nachází stabilizátor AMS117 5V, ten upravuje napětí z baterií pro potřeby procesoru.
+
+\subsubsection{Přijímač}
+Přijímač sestává ze singleplayerové verze, kruhu osmi IR přijímačů TSOP4840 a řídící jednotky.
+Všechny HC-SR04 mají znefunkčněný vysílač.
+Když procesor přijme z IR přijímačů signál započne měřit čas a odešle vysílací puls do HC-SR04, poté již jen čeká než se změní hodnota některého z Echo pinů na HC-SR04.
+V okamžiku kdy se tak stane procesor ukončí měření času a zaznamená si ze kterého HC-SR04 změna přišla.
+Díky tomu je schopen senzor zjistit nejen vzdálenost od vysílače, ale i přibližný směr k němu.
+Cokoliv co přijde po první změně nás nezajímá, protože se jedná o náhodný odraz od prostředí. 
