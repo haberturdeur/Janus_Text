@@ -27,8 +27,8 @@ Jako baterie je zde použit dvoučlánek baterií 18650.
 Řídící deska sestává ze dvou DPS umístěných nad sebou, propojených šestipinovým konektorem.
 
 Na horní desce se náchází procesor a náležitosti potřebné k~jeho fungování.
-Jako procesor je zde zvolen ATMEGA328, není zde totiž potřeba komunikace po Janus protocol, není tedy nutné používat dražší ESP32.
-Pro toto použití je ATMEGA dostačující.
+Jako procesor je zde zvolen ATMEGA328\cite{atmega}, není zde totiž potřeba komunikace po Janus protocol, není tedu nutné používat dražší ESP32.
+Pro toto použítí je ATMEGA dostačující.
 Úkolem procesoru je poslat na 40~kHz modulovaný puls ze synchronizačních IR LED společně s~vysláním ultrazvukového signálu ze všech HC-SR04 naráz. 
 Není třeba měřit návratový čas, protože na vysílači nás nezajímá.
 Procesor má zároveň dvě signalizační LED a umožňuje měření baterií, v~případě vybití signalizuje tuto skutečnost.

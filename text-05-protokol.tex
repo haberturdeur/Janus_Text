@@ -7,7 +7,7 @@ Zároveň se díky tomu nebudu muset starat o~udržení kompatibility s~Modbusem
 Další z~důvodů byla neexistence některých parametrů v~hlavičce Modbusové zprávy, jako například adresa odesílatele. 
 
 Janus protocol je snaha o~vytvoření uživatelsky co nejpřívětivějšího a zároveň robustního protokolu.
-Tento protokol je postavený z~velké části na Avakar protokolu.
+Tento protokol je postavený z~velké části na Avakar protokolu\footnote{Avakar je protokol vytvořený Martinem Vejnárem pro potřeby Robotics Brno.}.
 Přidává k~němu adresaci zpráv a CRC16.
 
 
@@ -19,7 +19,7 @@ Přidává k~němu adresaci zpráv a CRC16.
     \item Jednoduché přidání dalšího senzoru do již zavedeného systému
 \end{itemize}
 
-Janus protocol používá 7-bytovou hlavičku následovanou datovými byty, těch může být teoreticky až 255.
+Janus protocol používá 7-bytovou hlavičku následovanou datatovými byty, těch může být teoreticky až 255.
 Viz obrázek \ref{fig: Diagram protokolu}.
 
 Hlavička sestává ze startovacího bytu, ten je statický a má hodnotu vždy 0x80.
@@ -31,6 +31,7 @@ Následuje byte určující počet datových bytů.
 Na šesté a sedmé pozici se nachází 16-bitové CRC.
 
 Datové byty přenáší parametry pro příkaz určený číslem příkazu v hlavičce.
+Datové byty přenáší parametry, pro příkaz určený čísle příkazu v~hlavičce.
 To mohou být jak nastavovací hodnoty pro senzory, tak hodnoty vracené ze senzorů do řídící jednotky.
 
 \begin{figure}[h]
