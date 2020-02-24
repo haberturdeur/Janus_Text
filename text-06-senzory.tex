@@ -15,6 +15,12 @@ Senzor musí být na robotovi uchycen nad úrovní všech ostatních jednotek, p
 Druhý požadavek na použití tohoto senzoru je výškový rozdíl měřených objektů a objektů, které se na hřišti nacházejí, ale vzdálenost od nich k~robotovi měřit nechceme.
 Senzor musí být umístěn tak, aby jeho vrchní plocha byla maximálně na úrovni vrchní plochy měřených objektů, ale zároveň tak, aby při měření nezabíraly nechtěné objekty, což už je ovšem potřeba vyzkoušet na každém hřišti samostatně.
 
+Oproti samostatně používaným senzorům má toto řešení zásadní výhodu hlavně co se náročnosti na čas procesoru týká.
+Při přímém připojení na řídící jednotku musí jednotka při každém průchodu vyčíst všech 8 senzorů, kdy každé měření jednoho senzoru může trvat na běžném hřišti až 16~ms, tento čas se může zdát zanedbatelný, ale při provozu robota tomu tak není.
+Použijeme-li dodatečný meziprocesor tento čas nezměníme, ale hlavní jednotka se již samotným měřením nemusí zabývat, pouze pošle požadavek na modul a ten jí, podle předem nastavešných kritérií, vrátí buď všechny hodnoty, které jsou již v~modulu nabufferované, ne bo pouze tu nejmenší.
+Nabízí se také možnost nechat se pouze upozornit v~případě, že některá ze vzdáleností na naměřených modulem překročí předem danou mez.
+Tímto způsobem se celý proces jak měření jako takového, tak programování robota, razantně zjednodušuje.  
+
 \subsection{Janus omni-ultra}
 Tento senzor, nebo lépe řečeno uspořádání, potřebuje ke svému fungování dvě stanice.
 Jedna ze stanic je umístěna na robotovi, nazveme ji přijímačem.

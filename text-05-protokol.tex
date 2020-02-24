@@ -7,7 +7,7 @@ Zároveň se díky tomu nebudu muset starat o~udržení kompatibility s~Modbusem
 Další z~důvodů byla neexistence některých parametrů v~hlavičce Modbusové zprávy, jako například adresa odesílatele. 
 
 Janus protocol je snaha o~vytvoření uživatelsky co nejpřívětivějšího a zároveň robustního protokolu.
-Tento protokol je postavený z~velké části na Avakar protokolu\footnote{Avakar je protokol vytvořený Martinem Vejnárem pro potřeby Robotics Brno.}.
+Tento protokol je postavený z~velké části na Avakar protokolu\cite{avakar}\footnote{Avakar je protokol vytvořený Martinem Vejnárem pro potřeby Robotics Brno.\cite{robotikabrno}}.
 Přidává k~němu adresaci zpráv a CRC16.
 
 
@@ -24,13 +24,12 @@ Viz obrázek \ref{fig: Diagram protokolu}.
 
 Hlavička sestává ze startovacího bytu, ten je statický a má hodnotu vždy 0x80.
 Následuje adresa adresáta, zařízení, pro které je správa určena.
-Pokud je tato adresa rovna 0xFF, jedná se o broadcastovou zprávu. To znamená, že ji přijmou všechna zařízení, odpovědět na ni však může pouze jedno.
+Pokud je tato adresa rovna 0xFF, jedná se o~broadcastovou zprávu. To znamená, že ji přijmou všechna zařízení, odpovědět na ni však může pouze jedno.
 Na třetí pozici je adresa odesílatele zprávy.
 Na pozici čtvrté je číslo příkazu, ten říká zařízení jak má se správou naložit.
 Následuje byte určující počet datových bytů.
 Na šesté a sedmé pozici se nachází 16-bitové CRC.
 
-Datové byty přenáší parametry pro příkaz určený číslem příkazu v hlavičce.
 Datové byty přenáší parametry, pro příkaz určený čísle příkazu v~hlavičce.
 To mohou být jak nastavovací hodnoty pro senzory, tak hodnoty vracené ze senzorů do řídící jednotky.
 
@@ -41,6 +40,16 @@ To mohou být jak nastavovací hodnoty pro senzory, tak hodnoty vracené ze senz
         \end{center}
         \caption{Diagram protokolu}
         \label{fig: Diagram protokolu}
+    \end{small}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{small}
+        \begin{center}
+            \includegraphics[width=400px]{img/Protocol_connection_diagram.png}
+        \end{center}
+        \caption{Diagram uspořádání zařízení na sběrnici}
+        \label{fig: Diagram sběrnice}
     \end{small}
 \end{figure}
 
