@@ -27,19 +27,19 @@ Jako baterie je zde použit dvoučlánek baterií 18650.
 Řídící deska sestává ze dvou DPS umístěných nad sebou, propojených šestipinovým konektorem.
 
 Na horní desce se náchází procesor a náležitosti potřebné k~jeho fungování.
-Jako procesor je zde zvolen ATMEGA328, není zde totiž potřeba komunikace po Janus protocol, není tedu nutné používat dražší ESP32.
-Pro toto použítí je ATMEGA dostačující.
+Jako procesor je zde zvolen ATMEGA328, není zde totiž potřeba komunikace po Janus protocol, není tedy nutné používat dražší ESP32.
+Pro toto použití je ATMEGA dostačující.
 Úkolem procesoru je poslat na 40~kHz modulovaný puls ze synchronizačních IR LED společně s~vysláním ultrazvukového signálu ze všech HC-SR04 naráz. 
 Není třeba měřit návratový čas, protože na vysílači nás nezajímá.
 Procesor má zároveň dvě signalizační LED a umožňuje měření baterií, v~případě vybití signalizuje tuto skutečnost.
 
 Na spodní desce se nachází kruh synchronizačních IR LED, spojených na jeden tranzistor.
-Dále se zde nachází stabilizátor AMS1117 5V\cite{ams1117}, ten upravuje napětí z~baterií pro potřeby procesoru.
+Dále se zde nachází stabilizátor AMS1117 5V \cite{ams1117}, ten upravuje napětí z~baterií pro potřeby procesoru.
 
 \begin{figure}
     \begin{small}
         \begin{center}
-            \includegraphics[width=250px, angle = 270]{img/Vysilac2.jpg}
+            \includegraphics[width=250px, angle = 0, scale = 0.7]{img/Vysilac2.jpg}
         \end{center}
         \caption{Vysílač}
         \label{fig: Ultrasonic}
@@ -53,10 +53,10 @@ Všechny HC-SR04 mají znefunkčněný vysílač.
 Když procesor přijme z~IR přijímačů signál, započne měřit čas a odešle vysílací puls do HC-SR04, poté již jen čeká než se změní hodnota některého z~Echo pinů na HC-SR04.
 V~okamžiku, kdy se tak stane, procesor ukončí měření času a zaznamená si, ze kterého HC-SR04 změna přišla.
 Díky tomu je schopen senzor zjistit nejen vzdálenost od vysílače, ale i přibližný směr k~němu.
-Cokoliv co přijde po první změně nás nezajímá, protože se jedná o~náhodný odraz od objektů v~prostředí.
+Cokoliv, co přijde po první změně nás nezajímá, protože se jedná o~náhodný odraz od objektů v~prostředí.
 
 \section{Sběrač ultrazvukových senzorů}\label{Sberac}
 Tento senzor používá řídící elektroniku singleplayerového řešení všesměrového senzoru.
 Hlavní rozdíl oproti němu je možnost libovolného umístění senzorů HC-SR04 na robota.
 Důvodem tvorby tohoto senzoru je časová náročnost měření jednotlivých senzorů, která může razantně ovlivnit reakční dobu robota.
-Senzor je schopen po softwarovém zapnutí této funkce odesílat interupt signál při překročení nastavené meze přiblížení pro některý z~HC-SR04.
+Senzor je navíc oproti singlplayerovému řešení schopen po softwarovém zapnutí této funkce odesílat interupt signál při překročení nastavené meze přiblížení pro některý z~HC-SR04.

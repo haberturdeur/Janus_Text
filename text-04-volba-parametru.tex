@@ -33,7 +33,7 @@ Rozhodl jsem se použít pro všechny senzory i řídící jednotku procesory z~
 Některé z~důvodů:
 \begin{itemize}
     \item Built--in podpora pro RS-485 přímo v~UART driveru ESP32
-    \item Built--in podpora CRC\footnote{Cyklický redundantní součet. Kontrolní prvek využívaný ke kontrole správnosti přijatých dat, běžně používaný mimo jiné na sběrnici 1-Wire, nebo protokolu Modbus.}
+    \item Built--in podpora CRC\footnote{Cyklický redundantní součet. Kontrolní prvek využívaný ke kontrole správnosti přijatých dat, běžně používaný mimo jiné na sběrnici 1-Wire nebo protokolu Modbus.}
     \item Kompletní podpora C++v14 a STL na rozdíl od běžně používaných ATMEGA čipů, používaných například v Arduino deskách
     \item Kompatibilita se spoustou rozhraní a sběrnic -- může sloužit jako převodník mezi ostatními sběrnicemi a Janus protocol/RS485
     \item OTA -- možnost nahrávání programu přes internet\footnote{Snaha o~co nejjednodušší dodatečné opravy systému, kdy si senzory budou samy schopny dostahovat nejnovější firmware, a na obalu nebudou muset být vyvedené programovací konektory.}
