@@ -5,7 +5,7 @@ Tuto interakci zajišťují právě senzory.
 Naprostá většina amatérských týmů nemá prostor ani prostředky vytvářet vlastní senzory.
 Používání průmyslových senzorů je znemožňováno několika faktory.
 Zřejmě nejzásadnějším je cena, dále pak jejich velikost a hmotnost způsobená jejich robustností a kvalitou provedení.
-Týmy jsou tedy nuceny používat hotové destičky, o~nichž často nevědí, jaké komponenty obsahují a jak fungují.
+Týmy jsou tedy nuceny používat hotové senzorové moduly, o~nichž často nevědí, jaké komponenty obsahují a jak fungují.
 Senzory se dají rozdělit do několika kategorií:
 \begin{itemize}
     \item Senzory vzdálenosti
@@ -40,7 +40,7 @@ Podmínky pro jejich použití jsou však často velmi specifické a nedají se 
 Asi nejpoužívanějšími senzory vzdálenosti jsou senzory ultrazvukové.
 Ty fungují na principu vyslání ultrazvuového pulzu a čekání na jeho návrat.
 
-Nejběžněji používaný z~nich je HC-SR04\cite{hc-sr04}. 
+Nejběžněji používaný z~nich je HC-SR04~\cite{hc-sr04}. 
 Ten obsahuje ultrazvukový přijímač a vysílač, spolu s~dodatečnou elektronikou.
 Má čtyři vývody: 
 \begin{table}[h]
@@ -48,14 +48,14 @@ Má čtyři vývody:
 	\centering
 	\begin{tabular}{|l|l|l|l|l|} \hline
 		GND & společná zem/-   \\ \hline
-		VCC/5V & napájení 5V/+  \\ \hline
+		VCC/5~V & napájení 5~V/+  \\ \hline
 		Echo & Návrat měřené vzdálenosti   \\ \hline
 		Trig & Spouštění meření \\ \hline
     \end{tabular}
-    \caption{Vývody HC-SR04:}
+    \caption{Vývody HC-SR04}
 \end{table}
 
-Měření započne posláním logické 1 na pin Trig po dobu alespoň 10$\mathrm{\mu}$s.
+Měření započne posláním logické 1 na pin Trig po dobu alespoň 10~$\mathrm{\mu}$s.
 Poté, co Trig opět přepneme na logickou 0, vyšle senzor 8 40-ti kHz pulzů, zárověň nastaví na pinu Echo logickou 1.
 Po přijetí odraženého ultrazvukového signálu je na pinu Echo opět nastavena logická 0.
 Mikrokontroleru poté pouze zbýva měřit, jak dlouho byla na pinu Echo logická 1, tento čas pak dosadí do rovnice:
@@ -69,7 +69,7 @@ Mikrokontroleru poté pouze zbýva měřit, jak dlouho byla na pinu Echo logick�
 % \end{center} 
 Senzor je schopen měřit vzdálenosti od 2~cm do 4~m, dělá to při 15$^{\circ}$ úhlu.
 Senzor má nevalnou přesnost (+/-~2~cm).
-Největší úskalí při používaní tohoto senzoru nastává, pokud je na hřišti více robotů/nesynchronizovaných senzorů, kdy se senzory mohou navzájem rušit.
+Největší úskalí při používaní tohoto senzoru nastává, pokud je na hřišti více robotů, nebo nesynchronizovaných senzorů, kdy se senzory mohou navzájem rušit.
 Další problém může vyvstat při používaní pouze jednoho mikroprocesoru a několika ultrazvukových senzorů, kdy čas potřebný na změření všech senzorů přesáhne únosnou mez, čímž se zásadně prodlouží reakční čas robota.
 Tento problém se řeší použitím sekundárního procesoru pro obsloužení měření.
 
@@ -80,7 +80,7 @@ To s~sebou nese oproti ultrazvuku své výhody i nevýhody.
 Hlavní výhodou oproti ultrazvuku je menší pravděpodobnost zarušení ambientním signálem, pokud senzor používá modulovaný signál pro měření. 
 Nevýhodou je, že stejně jako ultrazvukové senzory mohou být i infračervené senzory přehlceny, v~tomto případě ale spíše silným ambientním zdrojem, například sluncem, než ostatními senzory.
 
-Nejpoužívanější IR senzor vzdálenosti je FC-51\cite{fc-51}, který má oproti HC-SR04 výrazně větší měřící úhlel 35$^{\circ}$ a výrazně menší rozsah měřitelných vzdáleností, konkrétně 2~cm až 30~cm.
+Nejpoužívanější IR senzor vzdálenosti je FC-51 \cite{fc-51}, který má oproti HC-SR04 výrazně větší měřící úhlel 35$^{\circ}$ a výrazně menší rozsah měřitelných vzdáleností, konkrétně 2~cm až 30~cm.
 Na rozdíl od HC-SR04, který měří plynule na celém rozsahu, měří FC-51 pouze přiblížení pod nastavenou mez, podle toho vrací na výstupu 0 a 1.
 Hranice přiblížení je nastavitelná pomocí potenciometru nacházejícím se přímo na senzoru.
 
@@ -117,7 +117,7 @@ Tato možnost má o~něco pomalejší měření oproti první metodě, neboť zd
 \subsection{Kamery}
 Zvláštní případem barevných senzorů jsou kamery.
 Ty však vyžadují v~závislosti na způsobu použití poměrně velký výpočetní výkon.
-To řeší použití samostatného procesoru pro zpracování obrazu, jako to dělá třeba populární Pixy.\footnote{Nebo můžeme použít aplikaci ve smartphonu, ty pro podobné aplikace mají výpočetního výkonu dostatek. Některé novější by mohly dokonce spustit nějaké Deep learning algoritmy pro zpracování obrazu.}
+To řeší použití samostatného procesoru pro zpracování obrazu, jako to dělá třeba populární Pixy\cite{pixy}\footnote{Nebo můžeme použít aplikaci ve smartphonu, ty pro podobné aplikace mají výpočetního výkonu dostatek. Některé novější by mohly dokonce spustit nějaké Deep learning algoritmy pro zpracování obrazu.}.
 
 Kamery poskytují výhodu hlavně co se zorného pole a vzdálenosti od povrchu týká, nemusí totiž být na rozdíl od dvou předchozích připevněny do několika milimetrů od měřeného povrchu.
 
@@ -126,7 +126,7 @@ Senzory pohybu poskytují robotu schopnost určit, jak se v~prostoru pohybuje, n
 Všechny však vyžadují nějaký způsob přepočtu.
 Tyto senzory neposkytují vždy přesné údaje, což není způsobeno přímo senzory, ale spíše typem a nedokonalostmi pohybu, který mají měřit.
 Polohové senzory, vyjma enkodérů, se zpravidla nepoužívají samostatně, ale v~celcích.
-Například běžně používaný senzor mpu-6050\cite{mpu6050} spojuje dohromady akcelerometr a gyroskop, zárověň má možnost připojit přímo na sebe kompas, což umožňuje vytvořit 9-osý systém.
+Například běžně používaný senzor mpu-6050 \cite{mpu6050} spojuje dohromady akcelerometr a gyroskop, zárověň má možnost připojit přímo na sebe kompas, což umožňuje vytvořit 9-osý systém.
 
 
 \subsection{Akcelerometry}
@@ -134,7 +134,7 @@ Akcelerometry měří lineární zrychlení.
 Ve větším provedení se jedná o~závaží na pružině, která je na druhé straně uchycená k~pouzdru. 
 Lineární zrychlení zjístíme změřením a přepočtem změny délky pružiny, neboli o~kolik se pružina zmáčkla/roztáhla, aby uvedla závaží do stejné rychlosti jako má pouzdro.
 V~menším provedení se využívá piezoelektrického jevu pro měření.
-Senzor může měnit hodnoty v~závislosti na teplotě, to je potřeba buď kompenzovat ve výpočtu, nebo zanedbat -- v~případě nepotřeby superpřesných údajů\cite{accel}.
+Senzor může měnit hodnoty v~závislosti na teplotě, to je potřeba buď kompenzovat ve výpočtu, nebo zanedbat -- v~případě nepotřeby superpřesných údajů \cite{accel}.
 
 \subsection{Gyroskopy}
 Gyroskopy měří úhlovou rychlost, případně úhel náklonu.
@@ -142,16 +142,16 @@ Ve velkém provedení se jedná o~setrvačník připevněný k~pouzdru způsobem
 Rotující setrvačník si zachová nezávisle na pohybu pouzdra svůj počáteční náklon.
 Díky tomu máme referenční objekt, od kterého můžeme měřit náklon.
 V~menším provedení se používá několik principů, jeden z~nich je Disk Resonator Gyroscope, který využívá pro měření Coriolisovy síly.
-Pro měření všech 3 os je potřeba více gyroskopů.
+Pro měření všech 3 os je potřeba více gyroskopů
 \cite{gyro}
-\cite{gyro-2}
+\cite{gyro-2}.
 
 \subsection{Enkodéry}
 Enkodéry slouží k~převádění mechanického pohybu kol na elektronický signál.
-Enkodéry se dají rozdělit na, ty, co se používají přímo na pohonu a na vlečné enkodéry.
+Enkodéry se dají rozdělit na ty, co se používají přímo na pohonu a na vlečné enkodéry.
 
 Enkodéry umístěny na pohonu zabírají méně místa než ty vlečné. 
-Naopak pokud proklouzne kolo, či část převodu, nemají to tyto senzory jak zjistit.
+Na druhou stranu, pokud proklouzne kolo, či část převodu, nemají to tyto senzory jak zjistit.
 
 Vlečné enkodéry mohou mít problém se změnou směru pohybu.
 Nejsou však ovlivněny možným proklouznutím hnacího kola, to proto, že měří pohyb relativně k~podložce, na rozdíl od těch umístěných na pohonu, které měří pohyb relativně k~robotovi.
@@ -166,9 +166,9 @@ Příklad takového systému je Global Positioning System, nebo jeho alternativy
 Tento systém využívá sadu satelitů, které neustále vysílají svou pozici společně s~časem odeslání zprávy.
 Pokud přijme přijímač data od alespoň 4 satelitů, může pomocí těchto zpráv triangulovat svoji polohu s~vysokou přesností.
 
-Další lokalizační systém používá HTC Vive\cite{htc}, sada pro vyrtuální realitu, využívající Steam VR\cite{steam} tracking.
+Další lokalizační systém používá HTC Vive \cite{htc}, sada pro vyrtuální realitu, využívající Steam VR \cite{steam} tracking.
 Ta je pomocí 2 majáčků schopna s~přesností na milimetr určit polohu senzoru v~prostoru.
 Nástroje pro tvorbu vlastních přijímačů jsou navíc volně dostupné, což z~tohoto systému činí perfektní způsob lokalizace objektů v~trojdimenzionálním prostoru.
-Jediná problematická věc je cena majáčků(199\$), které je potřeba koupit, neboť zatím nebyly uvolněny podklady, na základě nichž by bylo možné vytvořit vlastní iteraci majáčků.
+Jediná problematická věc je cena majáčků (199\$), které je potřeba koupit, neboť zatím nebyly uvolněny podklady, na základě nichž by bylo možné vytvořit vlastní iteraci majáčků.
 
 
