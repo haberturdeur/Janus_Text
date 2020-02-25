@@ -49,8 +49,8 @@ O~to se starají právě jednotlivé implementace\footnote{I přesto se dá UART
 Nejběžněji používané implementace UARTu jsou:
 \subsection{RS-232} % (fold)
 RS-232 \cite{RS-232} je implementace UART.
-Používá napěťové úrovně +5~V~až +15~V~pro logickou 1 a -5~V~až -15~V~pro logickou 0, toto platí pro vysílací část.
-Přijímací část přidává dvouvoltovou hysterezi kvůli rušení, což znamená +3~V~až +15~V~pro logickou 1 a -3~V~až -15~V~pro logickou 0.
+Používá napěťové úrovně +5~V~až +15~V~pro logickou 1 a --5~V~až --15~V   pro~logickou 0, toto platí pro vysílací část.
+Přijímací část přidává dvouvoltovou hysterezi kvůli rušení, což znamená +3~V~až +15~V~pro logickou 1 a --3~V~až --15~V~pro logickou 0.
 RS-232 potřebuje společnou GND.
 \begin{table}[h]
 	
@@ -66,10 +66,10 @@ RS-232 potřebuje společnou GND.
 % subsection RS-232 (end)
 \subsection{RS-485}\label{RS-485} % (fold)
 RS-485 \cite{RS-485} je další implementace UARTu.
-Nepoužívá ale napěťové úrovně oproti společné GND, nýbrž využívá rozdílu napětí na linkách A~a B, ten musí být alespoň 200mV.
+Nepoužívá ale napěťové úrovně oproti společné GND, nýbrž využívá rozdílu napětí na linkách A~a B, ten musí být alespoň 200~mV.
 To způsobuje několik věcí:
 \begin{itemize}
-	\item Pokud vedou obě linky podél sebe, nejlépe jsou-li kroucené, je prakticky nemožné komunikaci zarušit, což je v~prostředí motorů na robotu značná výhoda.\footnote{Zároveň to výrazně zvyšuje maximální možnou délku linky, při nižších rychlostech až na 1200~m. Doporučení: rychlost[baud]*vzdálenost[m] $<$ +/- 10$^{8}$.}   
+	\item Pokud vedou obě linky podél sebe, nejlépe jsou-li kroucené, je prakticky nemožné komunikaci zarušit, což je v~prostředí motorů na robotu značná výhoda\footnote{Zároveň to výrazně zvyšuje maximální možnou délku linky, při nižších rychlostech až na 1200~m. Doporučení: rychlost [baud] * vzdálenost [m] $<$ +/- 10$^{8}$.}.  
 	\item Není potřeba společná GND.
 	\item Pro plný duplexní mód (jedna linka na vysílání a jedna na přijímání) je potřeba dvojnásobný počet vodičů, tedy 4.
 \end{itemize}

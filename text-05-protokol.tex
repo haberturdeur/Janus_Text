@@ -1,4 +1,4 @@
-\chapter{Janus protocol}
+\chapter{Janus protocol} \label{Protocol}
 Na sběrnici RS-485 se nabízela možnost použít protokol Modbus \cite{modbus}, což je průmyslový standard.
 Byla to původně i moje volba, ale v~době, kdy jsem s~prací začínal, nebyl ještě Modbus na ESP32 oficiálně podporován.
 Rozhodl jsem se proto vytvořit vlastní protokol, pracovně pojmenovaný Janus protocol.
@@ -6,8 +6,8 @@ Nyní, i přestože je Modbus na ESP32 již podporován, jsem se rozhodl u~Janus
 Zároveň se díky tomu nebudu muset starat o~udržení kompatibility s~Modbusem.
 Další z~důvodů byla neexistence některých parametrů v~hlavičce Modbusové zprávy, jako například adresa odesílatele. 
 
-Janus protocol je snaha o~vytvoření uživatelsky co nejpřívětivějšího a zároveň robustního protokolu.
-Tento protokol je postavený z~velké části na Avakar protokolu\cite{avakar}\footnote{Avakar je protokol vytvořený Martinem Vejnárem pro potřeby Robotics Brno.\cite{robotikabrno}}.
+Janus protocol je snaha o~vytvoření uživatelsky co nejpřívětivějšího a~zároveň robustního protokolu.
+Tento protokol je postavený z~velké části na Avakar protokolu\footnote{Avakar je protokol vytvořený Martinem Vejnárem pro potřeby Robotics Brno \cite{robotikabrno}.} \cite{avakar}.
 Přidává k~němu adresaci zpráv a CRC16.
 
 
@@ -43,15 +43,17 @@ To mohou být jak nastavovací hodnoty pro senzory, tak hodnoty vracené ze senz
     \end{small}
 \end{figure}
 
-\begin{figure}[h]
-    \begin{small}
-        \begin{center}
-            \includegraphics[width=400px]{img/Protocol_connection_diagram.png}
-        \end{center}
-        \caption{Diagram uspořádání zařízení na sběrnici}
-        \label{fig: Diagram sběrnice}
-    \end{small}
-\end{figure}
+
+ %\begin{figure}[h]
+%    \begin{small}
+%        \begin{center}
+%           \includegraphics[width=400px,  angle =90]{img/Protocol_connection_diagram.png}
+%       \end{center}
+%        \caption{Diagram uspořádání zařízení na sběrnici}
+%        \label{fig:_Diagram_sbernice}
+ %   \end{small}
+%\end{figure}
+%todo sjednotit jazyk a zvětšít písmo 
 
 
 Kompletní implementace protokolu pro ESP32 je dostupná na serveru Github \cite{protocol}. 

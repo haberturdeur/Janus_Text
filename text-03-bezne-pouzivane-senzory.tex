@@ -3,8 +3,8 @@
 Každý robot potřebuje mít způsob interakce s~okolím.
 Tuto interakci zajišťují právě senzory.
 Naprostá většina amatérských týmů nemá prostor ani pros\-třed\-ky vytvářet vlastní senzory.
-Používání průmyslových senzorů je znemožňováno několika faktory.
-Zřejmě nejzásadnějším je cena, dále pak jejich velikost a hmotnost způsobená jejich robustností a kvalitou provedení.
+Používání průmyslových senzorů je zne\-mož\-ňo\-vá\-no několika faktory.
+Zřejmě nejzásadnějším je cena, dále pak jejich velikost a~hmotnost způsobená jejich robustností a kvalitou provedení.
 Týmy jsou tedy nuceny používat hotové senzorové moduly, o~nichž často nevědí, jaké komponenty obsahují a jak fungují.
 Senzory se dají rozdělit do několika kategorií:
 \begin{itemize}
@@ -117,7 +117,7 @@ Tato možnost má o~něco pomalejší měření oproti první metodě, neboť zd
 \subsection{Kamery}
 Zvláštní případem barevných senzorů jsou kamery.
 Ty však vyžadují v~závislosti na způsobu použití poměrně velký výpočetní výkon.
-To řeší použití samostatného procesoru pro zpracování obrazu, jako to dělá třeba populární Pixy\cite{pixy}\footnote{Nebo můžeme použít aplikaci ve smartphonu, ty pro podobné aplikace mají výpočetního výkonu dostatek. Některé novější by mohly dokonce spustit nějaké Deep learning algoritmy pro zpracování obrazu.}.
+To řeší použití samostatného procesoru pro zpracování obrazu, jako to dělá třeba populární Pixy\footnote{Nebo můžeme použít aplikaci ve smartphonu, ty pro podobné aplikace mají výpočetního výkonu dostatek. Některé novější by mohly dokonce spustit nějaké Deep learning algoritmy pro zpracování obrazu.} \cite{pixy}.
 
 Kamery poskytují výhodu hlavně co se zorného pole a vzdálenosti od povrchu týká, nemusí totiž být na rozdíl od dvou předchozích připevněny do několika milimetrů od měřeného povrchu.
 
@@ -143,7 +143,7 @@ Rotující setrvačník si zachová nezávisle na pohybu pouzdra svůj počáte�
 Díky tomu máme referenční objekt, od kterého můžeme měřit náklon.
 V~menším provedení se používá několik principů, jeden z~nich je Disk Resonator Gyroscope, který využívá pro měření Coriolisovy síly.
 Pro měření všech 3 os je potřeba více gyroskopů
-\cite{gyro}
+\cite{gyro},
 \cite{gyro-2}.
 
 \subsection{Enkodéry}
@@ -166,7 +166,7 @@ Příklad takového systému je Global Positioning System, nebo jeho alternativy
 Tento systém využívá sadu satelitů, které neustále vysílají svou pozici společně s~časem odeslání zprávy.
 Pokud přijme přijímač data od alespoň 4 satelitů, může pomocí těchto zpráv triangulovat svoji polohu s~vysokou přesností.
 
-Další lokalizační systém používá HTC Vive \cite{htc}, sada pro vyrtuální realitu, využívající Steam VR \cite{steam} tracking.
+Další lokalizační systém používá HTC Vive \cite{htc}, sada pro virtuální realitu, využívající Steam VR \cite{steam} tracking.
 Ta je pomocí 2 majáčků schopna s~přesností na milimetr určit polohu senzoru v~prostoru.
 Nástroje pro tvorbu vlastních přijímačů jsou navíc volně dostupné, což z~tohoto systému činí perfektní způsob lokalizace objektů v~trojdimenzionálním prostoru.
 Jediná problematická věc je cena majáčků (199\$), které je potřeba koupit, neboť zatím nebyly uvolněny podklady, na základě nichž by bylo možné vytvořit vlastní iteraci majáčků.

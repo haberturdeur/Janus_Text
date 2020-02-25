@@ -17,9 +17,9 @@ Senzor musí být umístěn tak, aby jeho vrchní plocha byla maximálně na úr
 
 Oproti samostatně používaným senzorům má toto řešení zásadní výhodu hlavně co se náročnosti na čas procesoru týká.
 Při přímém připojení na řídící jednotku musí jednotka při každém průchodu vyčíst všech 8 senzorů, kdy každé měření jednoho senzoru může trvat na běžném hřišti až 16~ms, tento čas se může zdát zanedbatelný, ale při provozu robota tomu tak není.
-Použijeme-li dodatečný meziprocesor tento čas nezměníme, ale hlavní jednotka se již samotným měřením nemusí zabývat, pouze pošle požadavek na modul a ten jí, podle předem nastavešných kritérií, vrátí buď všechny hodnoty, které jsou již v~modulu nabufferované, ne bo pouze tu nejmenší.
+Použijeme-li dodatečný meziprocesor tento čas nezměníme, ale hlavní jednotka se již samotným měřením nemusí zabývat, pouze pošle požadavek na modul a ten jí, podle předem nastavešných kritérií, vrátí buď všechny hodnoty, které jsou již v~modulu nabufferované, nebo pouze tu nejmenší.
 Nabízí se také možnost nechat se pouze upozornit v~případě, že některá ze vzdáleností na naměřených modulem překročí předem danou mez.
-Tímto způsobem se celý proces jak měření jako takového, tak programování robota, razantně zjednodušuje.  
+Tímto způsobem se celý proces, jak měření jako takového, tak programování robota, razantně zjednodušuje.  
 
 \subsection{Janus omni-ultra}
 Tento senzor, nebo lépe řečeno uspořádání, potřebuje ke svému fungování dvě stanice.
@@ -32,9 +32,9 @@ Vysílač sestává ze singleplayerové verze, kruhu synchronizačních IR LED, 
 Jako baterie je zde použit dvoučlánek baterií 18650.
 Řídící deska sestává ze dvou DPS umístěných nad sebou, propojených šestipinovým konektorem.
 
-Na horní desce se náchází procesor a náležitosti potřebné k~jeho fungování.
-Jako procesor je zde zvolen ATMEGA328\cite{atmega}, není zde totiž potřeba komunikace po Janus protocol, není tedu nutné používat dražší ESP32.
-Pro toto použítí je ATMEGA dostačující.
+Na horní desce se nachází procesor a náležitosti potřebné k~jeho fungování.
+Jako procesor je zde zvolen ATMEGA328 \cite{atmega}, není zde totiž potřeba komunikace po Janus protocol, není tedu nutné používat dražší ESP32.
+Pro toto použití je ATMEGA dostačující.
 Úkolem procesoru je poslat na 40~kHz modulovaný puls ze synchronizačních IR LED společně s~vysláním ultrazvukového signálu ze všech HC-SR04 naráz. 
 Není třeba měřit návratový čas, protože na vysílači nás nezajímá.
 Procesor má zároveň dvě signalizační LED a umožňuje měření baterií, v~případě vybití signalizuje tuto skutečnost.
