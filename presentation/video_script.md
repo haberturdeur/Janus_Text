@@ -2,15 +2,15 @@
 
 ## Představení <!-- Greenscreen postavy -->
 Dobrý den, jmenuji se Tomáš Rohlínek, jsem student SPŠ Sokolské v Brně, instruktor zájmového kroužku na pobočce DDM Helceletova Brno, Robotárně, ale hlavně nadšenec do robotiky.
-Chtěl bych vám představit projekt na které jsem poslední dva roky pracoval.
+Chtěl bych představit projekt na kterém poslední dva roky pracuji.
 
 ## Zdůvodnění
-Osobně nemám z mnoha důvodů rád Lego Mindstorms.
-Jedním z mnoha důvodů může být například jeho omezenost, co se konstrukce týče, druhým faktorem je pak nepochybně vysoká cena.
-Jedna z věcí kterou tato stavebnice zvládá poměrně dobře jsou rozšiřující moduly, i přestože je jejich výběr značně omezen, jejich systém propojování jednotlivých senzorů je velmi uživatelsky přívětivý, pomineme-li fakt, že mohou být připojeny pouze 4 najednou.
+Nemám z mnoha důvodů rád Lego Mindstorms, například jeho konstrukční omezenost, (najdi si trojici) a vysoká cena. 
+Avšak Mindstorms zvládá jednu věc perfektně. Rozšiřující moduly. I přestože, že je jejich výběr značně omezen a mohou být připojeny pouze čtyři najednou, (nacpat něco pozitivního, je potřeba mít silnější pozitivní argument) a systém propojování jednotlivých senzorů je uživatelsky velmi přívětivý.
 
-Stejný přístup jsem se proto rozhodl použít při vytváření svého systému senzorů.
+Proto jsem se stejný přístup rozhodl použít při vytváření svého systému senzorů.
 
+(hoď sem laický tldr; absolutně netuším o čem mluvíš)
 ## Sběrnice
 Hlavní součásti tohoto ekosystému je sběrnice a protokol pro komunikaci mezi moduly.
 Komunikace probíhá po sběrnici RS-485, ta byla zvolena kvůli její robustnosti.
