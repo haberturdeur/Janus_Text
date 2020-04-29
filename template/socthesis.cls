@@ -11,6 +11,7 @@
 \RequirePackage{csquotes}
 \RequirePackage[backend=bibtex,bibstyle=numeric,sorting=none,date=long,dateabbrev=false,texencoding=utf8,bibencoding=utf8,style=iso-numeric]{biblatex}
 \RequirePackage{caption}
+\RequirePackage{geometry}
 
 
 %%%%%% PŘÍKAZY
@@ -20,11 +21,13 @@
 %%%%%% ROZMĚRY
 
 % posun textu kvůli kroužkové vazbě
-%\addtolength{\textwidth}{mm}
-\addtolength{\hoffset}{4mm}
+% \addtolength{\textwidth}{70mm}
+% \addtolength{\hoffset}{4mm}
+
+\geometry{margin=25mm}
 
 \setlength{\intextsep}{5mm} % nastavení mezery okolo obrázků
-\marginparsep=15pt
+% \marginparsep=15pt
 \linespread{1.3}
 \unitlength=1mm % nastavení volby jednotek
 
@@ -81,59 +84,63 @@
 %%% Titulní strany
 \renewcommand{\maketitle}{%
 	\pagestyle{empty}
-	\voffset = -20mm % posun začátku textu výš
-    \enlargethispage{40mm} % zvětší oblast tisku pro tuto stránku
+	\voffset = 5mm % posun začátku textu výš
+	% \enlargethispage{40mm} % zvětší oblast tisku pro tuto stránku
 	\begin{center}
-	    {\large \B{STŘEDOŠKOLSKÁ ODBORNÁ ČINNOST}} \\
-	    \vspace{5mm}
-		\normalsize \B{Obor: \@field} \\
+		{\Large \B{Střední průmyslová škola a Vyšší odborná škola Brno, Sokolská, příspěvková organizace}}\\
+
 
 		\vspace{40mm}
-
+		{\LARGE {\MakeUppercase{Ročníková práce}}}\\
+		\vspace{5mm}
+		{\LARGE {Z Technické fyziky}}\\
+		\vspace{40mm}
 		{\LARGE \B{\@titlecz}} \\
 
 		\vfill
-
-        	{\Large \B{\@author}} \\
-
-		\vspace{20mm}
-
-		{\large \B{\@placefooter}}
 	\end{center}
+	\begin{tabular}{l l l}
+		{\large Studijní obor:}	&	{\large Technické lyceum 78-42-M/01}	\\
+		{\large Třída:}			&	{\large L3A}							\\
+		{\large Školní rok:}	&	{\large 2019/2020}						\\
+		{\large Jméno:}			&	{\large \B{Tomáš}}						\\
+		{\large Přijmení:}		&	{\large \B{Rohlínek}}					\\
+	\end{tabular}
+		
 	\newpage
 
-	\pagestyle{empty}
-    \enlargethispage{40mm} % zvětší oblast tisku pro tuto stránku
-	\begin{center}
-	    {\large \B{STŘEDOŠKOLSKÁ ODBORNÁ ČINNOST}} \\
+	% \pagestyle{empty}
+    % \enlargethispage{40mm} % zvětší oblast tisku pro tuto stránku
+	% \begin{center}
+	%     {\large \B{STŘEDOŠKOLSKÁ ODBORNÁ ČINNOST}} \\
 
-		\vspace{40mm}
+	% 	\vspace{40mm}
 
-		{\Large \B{\expandafter\MakeUppercase\expandafter{\@titlecz}}} \\
-		\vspace{20mm}
-		{\large \B{\expandafter\MakeUppercase\expandafter{\@titleen}}} \\
+	% 	{\Large \B{\expandafter\MakeUppercase\expandafter{\@titlecz}}} \\
+	% 	\vspace{20mm}
+	% 	{\large \B{\expandafter\MakeUppercase\expandafter{\@titleen}}} \\
 
-		\vfill
+	% 	\vfill
 
-        \begin{table}[h]
-        \setlength{\tabcolsep}{12pt}
-        \renewcommand{\arraystretch}{1.5}
-        \linespread{1.0}
-		\begin{tabularx}{\textwidth}{r >{\raggedright}p{90mm} c}
-		\large \B{AUTOR} & \large \B{\@author} & \\
-		\large \B{ŠKOLA} & \large \B{\@school} & \\
-		\large \B{KRAJ} & \large \B{\@region} & \\
-		\large \B{ŠKOLITEL} & \large \B{\@mentor} & \\
-		\large \B{OBOR} & \large \B{\@field} & \\
-		\end{tabularx}
-		\setlength{\tabcolsep}{6pt}
-        \renewcommand{\arraystretch}{1.0}
-		\end{table}
+    %     \begin{table}[h]
+    %     \setlength{\tabcolsep}{12pt}
+    %     \renewcommand{\arraystretch}{1.5}
+    %     \linespread{1.0}
+	% 	\begin{tabularx}{\textwidth}{r >{\raggedright}p{90mm} c}
+	% 	\large \B{AUTOR} & \large \B{\@author} & \\
+	% 	\large \B{ŠKOLA} & \large \B{\@school} & \\
+	% 	\large \B{KRAJ} & \large \B{\@region} & \\
+	% 	\large \B{ŠKOLITEL} & \large \B{\@mentor} & \\
+	% 	\large \B{OBOR} & \large \B{\@field} & \\
+	% 	\end{tabularx}
+	% 	\setlength{\tabcolsep}{6pt}
+    %     \renewcommand{\arraystretch}{1.0}
+	% 	\end{table}
 
-		\vspace{10mm}
+	% 	\vspace{10mm}
 
-		{\large \B{\@placefooter}}
-	\end{center}
+	% 	{\large \B{\@placefooter}}
+	% \end{center}
 	\newpage
 	\voffset = 0mm
 	\pagestyle{plain}
@@ -148,8 +155,6 @@
 
 	\section*{Prohlášení}
 	Prohlašuji, že svou práci na téma \It{\@titlecz} jsem vypracoval samostatně pod vedením {\@mentorstatement} a~s~použitím odborné literatury a~dalších informačních zdrojů, které jsou všechny citovány v~práci a~uvedeny v~seznamu literatury na~konci práce.
-
-	Dále prohlašuji, že tištěná i~elektronická verze práce SOČ jsou shodné a~nemám závažný důvod proti zpřístupňování této práce v~souladu se~zákonem č.~121/2000~Sb., o~právu autorském, o~právech souvisejících s~právem autorským a~změně některých zákonů (autorský zákon) v~platném změní.
 
 	\vspace{10mm}
 
