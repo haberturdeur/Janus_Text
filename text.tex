@@ -6,26 +6,54 @@
 % Base on: http://www.jcmm.cz/cz/sablona-soc.html
 % License: CC BY 4.0
 
-\documentclass{template/socthesis}
+\documentclass{template/template}
 
+\usepackage [czech] {babel}
+\usepackage[T1]{fontenc} % evropské uvozovky
 \usepackage{subcaption}
 \usepackage{amsmath}
 \usepackage{enumitem}
-\usepackage{biblatex}
+\usepackage{hyperref}
+\usepackage{gensymb} % balíček symbolů
+\usepackage{booktabs}
+\usepackage{lmodern}
+\usepackage{csquotes} % text lze uvést do uvozovek pomocí \enquote{text}
+\usepackage{textcomp}
+
+\usepackage[toc,page]{appendix}
+\usepackage{color} % balíček pro obarvování textů
+\usepackage{xcolor}  % zapne možnost používání barev, mj. pro \definecolor
+\definecolor{mygreen}{RGB}{0,153,153} % nastavení barev odkazů 
+\usepackage{listings} % balíček pro formátování zdrojových kódů 
+\usepackage[author=,status=draft]{fixme} % vkládání poznámek  
+% dva módy (status): draft (poznámky se zobrazují v PDF) / final (poznámky se nezobrazují v PDF)
+\usepackage{multirow}
+\usepackage{float}
+
+\usepackage{etoolbox}
+
+\usepackage{expl3} % bibtex dependency, must be loaded prior to the bibtex
+\usepackage[backend=biber,bibstyle=numeric,sorting=none,date=long,dateabbrev=false,texencoding=utf8,bibencoding=utf8,style=iso-numeric]{biblatex}
+
+\usepackage[a4paper]{geometry}
+
+
 
 \addbibresource{text.bib}
 
 \titlecz{Modulární stavba soutěžních robotů}
 \titleen{Modular construction of competitive robots}
 \author{Tomáš Rohlínek}
-\field{10} % Obory SOČ: 1 - 18 (http://www.soc.cz/obory-soc/)
-\school{Střední průmyslová škola a Vyšší odborná škola Brno, Sokolská, příspěvková organizace}
+\institution{STŘEDNÍ PRŮMYSLOVÁ A VYŠŠÍ ODBORNÁ ŠKOLA BRNO, Sokolská 1} % Celý název instituce
+\institutiontype{příspěvková organizace} % Typ instituce
+\thesistype{Maturitní práce}  % Typ práce/dokumentu
 \mentor{Mgr. Miroslav Burda}
 \mentorstatement{Mgr. Miroslava Burdy}
+\field{test}
 
 % Změňte, pokud se liší
 %\region{Jihomoravský}
-\placefooter{Brno 2020}
+\placefooter{Brno 2021}
 
 \begin{document}
 	\maketitle

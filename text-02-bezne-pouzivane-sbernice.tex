@@ -8,8 +8,8 @@ V~oboru amatérské stavby robotů se v~praxi používá několik sběrnic a pro
 	\item I$^{2}$C
 	\item UART
 	      \begin{itemize}
-		      \item RS-232
-		      \item RS-485
+	      	\item RS-232
+	      	\item RS-485
 	      \end{itemize}
 	\item SPI
 	\item 1-Wire
@@ -22,19 +22,19 @@ také známá jako Inter-Intergrated Circuit\footnote{ Protože je značka I$^{2
 Tato sběrnice byla vyvinuta firmou Philips primárně pro připojení periferií, které nevyžadovaly vysoké komunikační rychlosti.
 Sběrnice podporuje jak multi-master, tak multi-slave.
 Běžná rychlost je 100~kbit/s, ve Fast modu je 400~kbit/s. Novější revize pak umožňují až 5 Mbit/s, s~touto verzí však nemusí být kompatibilní starší zařízení.
-I$^{2}$C používá 7-bitovou adresu, což teoreticky znamená, že je na každé sběrnici možno provozovat až 127 zařízení, prakticky je toto číslo značně nižší.
+I$^{2}$C používá 7-bitovou nebo 10-bitovou adresu, což teoreticky znamená, že je na každé sběrnici možno provozovat až 1023 zařízení, prakticky je toto číslo značně nižší. \footnote{10-bitový nemusí být podporovaný všemi zařízeními.}
 I$^{2}$C využívá TTL.
 Maximální délka sběrnice je 1 metr na 100~kBd, sběrnice však nebyla designovaná na provoz po kabelu, jak je zvyklá ji používat většina amatérských nadšenců.
 
 \begin{table}[h]
-	
+		
 	\centering
 	\begin{tabular}{|l|l|l|l|l|} \hline
-		Maximální počet zařízení      & 127              \\ \hline
-		Maximální délka               & 1~metr           \\ \hline
+		Maximální počet zařízení   & 127/1023          \\ \hline
+		Maximální délka               & 1~metr            \\ \hline
 		Běžná rychlost                & 100~kbit/s        \\ \hline
 		Maximální teoretická rychlost & 5~Mbit/s          \\ \hline
-		Minimální počet vodičů        & 3~(SDA, SCL, GND) \\ \hline
+		Minimální počet vodičů      & 3~(SDA, SCL, GND) \\ \hline
 	\end{tabular}
 	\caption{Shrnutí hlavních parametrů I$^{2}$C}
 \end{table}
@@ -53,13 +53,13 @@ Používá napěťové úrovně +5~V~až +15~V~pro logickou 1 a --5~V~až --15~V
 Přijímací část přidává dvouvoltovou hysterezi kvůli rušení, což znamená +3~V~až +15~V~pro logickou 1 a --3~V~až --15~V~pro logickou 0.
 RS-232 potřebuje společnou GND.
 \begin{table}[h]
-	
+		
 	\centering
 	\begin{tabular}{|l|l|l|l|l|} \hline
-		Maximální počet zařízení      & 2              \\ \hline
-		Běžná rychlost                & 115200~baud/9600~baud        \\ \hline
-		Maximální teoretická rychlost & 10~Mbit/s       \\ \hline
-		Minimální počet vodičů        & 3~(Tx, Rx, GND) \\ \hline
+		Maximální počet zařízení   & 2                     \\ \hline
+		Běžná rychlost                & 115200~baud/9600~baud \\ \hline
+		Maximální teoretická rychlost & 10~Mbit/s             \\ \hline
+		Minimální počet vodičů      & 3~(Tx, Rx, GND)       \\ \hline
 	\end{tabular}
 	\caption{Shrnutí hlavních parametrů RS-232}
 \end{table}
@@ -75,13 +75,13 @@ To způsobuje několik věcí:
 \end{itemize}
 V~závislosti na použitém převodníku z~UART na RS-485 může být počet zařízení na sběrnici 32 nebo až 128.
 \begin{table}[h]
-	
+		
 	\centering
 	\begin{tabular}{|l|l|l|l|l|} \hline
-		Maximální počet zařízení      & 32/128              \\ \hline
-		Běžná rychlost                & 115200~baud/9600~baud        \\ \hline
-		Minimální počet vodičů        & 2 (A, B) \\ \hline
-		Maximální vzdálenost		  & 1200~m \\ \hline
+		Maximální počet zařízení & 32/128                \\ \hline
+		Běžná rychlost              & 115200~baud/9600~baud \\ \hline
+		Minimální počet vodičů    & 2 (A, B)              \\ \hline
+		Maximální vzdálenost        & 1200~m                \\ \hline
 	\end{tabular}
 	\caption{Shrnutí hlavních parametrů RS-485}
 \end{table}
@@ -91,10 +91,10 @@ V~závislosti na použitém převodníku z~UART na RS-485 může být počet za�
 SPI \cite{nxp:AN2847}, neboli Serial Peripherial Interface, je dvoukanálová synchronní multi-slave\footnote{Na sběrnici je naráz připojen pouze jeden master (řídící jednotka) a typem sběrnice omezené množství slave (řízených) zařízení.} sběrnice.
 Pro komunikaci využívá 4 vodiče:
 \begin{itemize}
-		\item MOSI (Master Output Slave Input) -- výstup z~master a vstup do slave
-		\item MISO (Master Input Slave Output) -- výstup ze slave a vstup do master
-		\item SCK -- hodinový signál
-		\item SS (Slave Select) -- tímto pinem nastavujeme, který slave je momentálně aktivní
+	\item MOSI (Master Output Slave Input) -- výstup z~master a vstup do slave
+	\item MISO (Master Input Slave Output) -- výstup ze slave a vstup do master
+	\item SCK -- hodinový signál
+	\item SS (Slave Select) -- tímto pinem nastavujeme, který slave je momentálně aktivní
 \end{itemize}
 Na straně masteru může pak díky tomu být počet použitých pinů větší (3~+~počet slave zařízení).
 
