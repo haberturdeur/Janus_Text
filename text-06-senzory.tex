@@ -6,8 +6,8 @@ Další senzory jsou ve vývoji.
 \section{Všesměrový ultrazvukový senzor}
 Obě iterace tohoto senzoru používají 8 senzorů HC-SR04 uspořádaných do osmiúhelníku.
 Hlavní rozdíl mezi nimi je v~možnosnosti použití.
-Zatímco první iterace je nachystaná pro singleplayerové disciplíny,~druhá iterace pracovně pojmenovan Janus omni-ultra vyžaduje buď soupeře na hřišti, nebo možnost umístění majáčků okolo hřiště. 
-Na Pražském robotickém dni tomuto odpovídá disciplína Roadside Assistance Advanced, ve světě jsou však tyto disciplíny rozšířenější.
+Zatímco první iterace je nachystaná pro singleplayerové disciplíny,~druhá iterace, pracovně pojmenovaná Janus omni-ultra vyžaduje buď soupeře na hřišti, nebo možnost umístění majáčků okolo hřiště. 
+Na Pražském robotickém dni tomuto odpovídá pouze disciplína Roadside Assistance Advanced, ve světě jsou však tyto disciplíny rozšířenější.
 
 \subsection{Singleplayerové řešení}
 Jedná se o~osm senzorů HC-SR04 uspořádaných do osmiúhelníku, všechny senzory jsou svedeny do procesoru tak, aby se každý dal číst a aktivovat samostatně.
@@ -17,7 +17,7 @@ Senzor musí být umístěn tak, aby jeho vrchní plocha byla maximálně na úr
 
 Oproti samostatně používaným senzorům má toto řešení zásadní výhodu hlavně co se náročnosti na čas procesoru týká.
 Při přímém připojení na řídící jednotku musí jednotka při každém průchodu vyčíst všech 8 senzorů, kdy každé měření jednoho senzoru může trvat na běžném hřišti až 16~ms, tento čas se může zdát zanedbatelný, ale při provozu robota tomu tak není.
-Použijeme-li dodatečný meziprocesor tento čas nezměníme, ale hlavní jednotka se již samotným měřením nemusí zabývat, pouze pošle požadavek na modul a ten jí, podle předem nastavešných kritérií, vrátí buď všechny hodnoty, které jsou již v~modulu nabufferované, nebo pouze tu nejmenší.
+Použijeme-li dodatečný meziprocesor, tento čas nezměníme, ale hlavní jednotka se již samotným měřením nemusí zabývat, pouze pošle požadavek na modul a ten jí, podle předem nastavešných kritérií, vrátí buď všechny hodnoty, které jsou již v~modulu změřené a nachystané, nebo pouze tu nejmenší.
 Nabízí se také možnost nechat se pouze upozornit v~případě, že některá ze vzdáleností na naměřených modulem překročí předem danou mez.
 Tímto způsobem se celý proces, jak měření jako takového, tak programování robota, razantně zjednodušuje.  
 

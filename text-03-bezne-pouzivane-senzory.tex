@@ -32,13 +32,13 @@ Senzory se dají rozdělit do několika kategorií:
 
 \section{Senzory vzdálenosti}
 
-Senzory pro zjišťování vzdálenosti dodávájí robotovi poměrně primitivním způsobem schopnost přibližně určit svou polohu na základě vzdáleností od okolních objektů.
+Senzory pro zjišťování vzdálenosti dodávají robotovi poměrně primitivním způsobem schopnost přibližně určit svou polohu na základě vzdáleností od okolních objektů.
 Podmínky pro jejich použití jsou však často velmi specifické a nedají se proto samy o~sobě použít pro přesnější lokalizaci.
 
 \subsection{Ultrazvukové senzory}
 
 Asi nejpoužívanějšími senzory vzdálenosti jsou senzory ultrazvukové.
-Ty fungují na principu vyslání ultrazvuového pulzu a čekání na jeho návrat.
+Ty fungují na principu vyslání ultrazvukového pulzu a čekání na jeho návrat.
 
 Nejběžněji používaný z~nich je HC-SR04~\cite{hc-sr04}. 
 Ten obsahuje ultrazvukový přijímač a vysílač, spolu s~dodatečnou elektronikou.
@@ -56,9 +56,9 @@ Má čtyři vývody:
 \end{table}
 
 Měření započne posláním logické 1 na pin Trig po dobu alespoň 10~$\mathrm{\mu}$s.
-Poté, co Trig opět přepneme na logickou 0, vyšle senzor 8 40-ti kHz pulzů, zárověň nastaví na pinu Echo logickou 1.
+Poté, co Trig opět přepneme na logickou 0, vyšle senzor 8 40-ti kHz pulzů, zároveň nastaví na pinu Echo logickou 1.
 Po přijetí odraženého ultrazvukového signálu je na pinu Echo opět nastavena logická 0.
-Mikrokontroleru poté pouze zbýva měřit, jak dlouho byla na pinu Echo logická 1, tento čas pak dosadí do rovnice:
+Mikrokontroléru poté pouze zbývá měřit, jak dlouho byla na pinu Echo logická 1, tento čas pak dosadí do rovnice:
 % \begin{center}
 %     % \begin{equation}
 %     %     $\mathrm{vzdálenost=(naměřený čas*rychlost zvuku)}/2$
@@ -91,7 +91,7 @@ Místo jednosměrného měření pak vytvaří v~podstatě mapu prostoru.
 Lidar používá k~měření laserový, většinou IR, paprsek.
 Radar používá rádiové vlny, které mohou částečně pronikat materiály, což umožňuje \uv{vidět} skrz zdi.
 Sonar používá k~měření zvukové vlny, což je s~výhodou využíváno hlavně pod vodou, kde se tyto vlny velmi dobře šíří.
-Bohužel zatím neexistuje spolehlivá a levná iterace těchto senzorů, která by se dala použít na soutěžních robotech.
+Bohužel zatím neexistuje spolehlivá a~levná iterace těchto senzorů, která by se dala použít na soutěžních robotech.
 
 \section{Senzory barvy}
 Senzory barvy jsou použitelné pouze v~některých soutěžních disciplínách.
@@ -100,7 +100,7 @@ Dávají našemu robotovi možnost zjišťovat barvu herních objektů a podlož
 \subsection{Black-white senzory}
 Tyto senzory využívají světelný zdroj, zpravidla IR nebo bílý, v~kombinaci s~plynulým světelným senzorem citlivým na vlnovou délku světla zdroje.
 Každá látka v~závislosti na své barvě pohlcuje a odráží světlo jinak, nám poté zbývá pouze změřit, kolik světla se odrazilo.
-Senzory tedy defakto neměří, jestli je povrch černý nebo bílý, ale spíše jestli je světlý či tmavý.
+Senzory tedy vlastně neměří, jestli je povrch černý nebo bílý, ale spíše jestli je světlý či tmavý.
 Existuje obrovské množství iterací tohoto senzoru -- některé plynulé, jiné digitální s~nastavitelnou hranicí překlopení.
 B-W senzory se nejčastěji používají v~soutěžích jako line follower\footnote{Soutěž, ve které se robot pokouší co nejrychleji projet dráhu vyznačenou nejčastěji černou čárou na podložce. V~poslední době se do cesty přidávají také překážky, kterým se robot musí vyhnout.}, kde není potřeba kompletní RGB detekce.
 
@@ -132,7 +132,7 @@ Například běžně používaný senzor mpu-6050 \cite{mpu6050} spojuje dohroma
 \subsection{Akcelerometry}
 Akcelerometry měří lineární zrychlení.
 Ve větším provedení se jedná o~závaží na pružině, která je na druhé straně uchycená k~pouzdru. 
-Lineární zrychlení zjístíme změřením a přepočtem změny délky pružiny, neboli o~kolik se pružina zmáčkla/roztáhla, aby uvedla závaží do stejné rychlosti jako má pouzdro.
+Lineární zrychlení zjistíme změřením a přepočtem změny délky pružiny, neboli o~kolik se pružina zmáčkla/roztáhla, aby uvedla závaží do stejné rychlosti, jako má pouzdro.
 V~menším provedení se využívá piezoelektrického jevu pro měření.
 Senzor může měnit hodnoty v~závislosti na teplotě, to je potřeba buď kompenzovat ve výpočtu, nebo zanedbat -- v~případě nepotřeby superpřesných údajů \cite{accel}.
 
@@ -142,7 +142,7 @@ Ve velkém provedení se jedná o~setrvačník připevněný k~pouzdru způsobem
 Rotující setrvačník si zachová nezávisle na pohybu pouzdra svůj počáteční náklon.
 Díky tomu máme referenční objekt, od kterého můžeme měřit náklon.
 V~menším provedení se používá několik principů, jeden z~nich je Disk Resonator Gyroscope, který využívá pro měření Coriolisovy síly.
-Pro měření všech 3 os je potřeba více gyroskopů
+Pro měření všech 3~os je potřeba více gyroskopů
 \cite{gyro},
 \cite{gyro-2}.
 

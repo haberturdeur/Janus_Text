@@ -22,7 +22,7 @@ také známá jako Inter-Intergrated Circuit\footnote{ Protože je značka I$^{2
 Tato sběrnice byla vyvinuta firmou Philips primárně pro připojení periferií, které nevyžadovaly vysoké komunikační rychlosti.
 Sběrnice podporuje jak multi-master, tak multi-slave.
 Běžná rychlost je 100~kbit/s, ve Fast modu je 400~kbit/s. Novější revize pak umožňují až 5 Mbit/s, s~touto verzí však nemusí být kompatibilní starší zařízení.
-I$^{2}$C používá 7-bitovou nebo 10-bitovou adresu, což teoreticky znamená, že je na každé sběrnici možno provozovat až 1023 zařízení, prakticky je toto číslo značně nižší. \footnote{10-bitový nemusí být podporovaný všemi zařízeními.}
+I$^{2}$C používá 7-bitovou nebo 10-bitovou adresu, což teoreticky znamená, že je na každé sběrnici možno provozovat až 1023 zařízení, prakticky je toto číslo značně nižší \footnote{10-bitový nemusí být podporovaný všemi zařízeními.}.
 I$^{2}$C využívá TTL.
 Maximální délka sběrnice je 1 metr na 100~kBd, sběrnice však nebyla designovaná na provoz po kabelu, jak je zvyklá ji používat většina amatérských nadšenců.
 
@@ -99,16 +99,16 @@ Pro komunikaci využívá 4 vodiče:
 Na straně masteru může pak díky tomu být počet použitých pinů větší (3~+~počet slave zařízení).
 
 Další možná konfigurace je tzv. Daisy-chain, kdy je  MOSI masteru připojeno na MOSI prvního slave zařízení a MISO prvního slave zařízení je připojeno na MOSI dalšího slave zařízení, až MISO posledního slave zařízení je připojeno na MISO masteru.
-Tato konfigurace poskytuje snížení počtu vodičů, zároveň ale snižuje i komunikační rychlost, protože informace od prvního slave zařízení musí obejít celý kruh, než se dostanou zpět k~master zařízení.
+Tato konfigurace poskytuje snížení počtu vodičů, zároveň ale snižuje i~komunikační rychlost, protože informace od prvního slave zařízení musí obejít celý kruh, než se dostanou zpět k~master zařízení.
 
 Nespornou výhodou SPI je její rychlost.
 Maximální rychlost není definovaná, aplikace běžně jdou až přes 10~Mb/s.
-Nevýhodou může být velký počet vodičů, př použití standartního zapojení.
+Nevýhodou může být velký počet vodičů při použití standartního zapojení.
 
 
 \section{1-Wire}
 1-Wire \cite{one-wire} je sběrnice (a protokol zároveň), která, jak již její název napovídá, potřebuje pouze jeden vodič.
-K~tomu potřebuje ještě společnou GND, ale i tak to jsou pouze 2~vodiče, které obsáhnou napájení i komunikaci\footnote{Sběrnici je možno provozovat i na třílinkovém módu.}.
+K~tomu potřebuje ještě společnou GND, ale i tak to jsou pouze 2~vodiče, které obsáhnou napájení i komunikaci\footnote{Sběrnici je možno provozovat i v třílinkovém módu.}.
 Této typologie se využívá třeba u~kontaktních přístupových čipů.
 Sběrnice je také poměrně známá pro svůj CRC součet, který umožňuje kontrolu odeslaných dat.
 1-Wire je kompatibilní s~TTL.

@@ -26,11 +26,11 @@ Hlavička sestává ze startovacího bytu, ten je statický a má hodnotu vždy 
 Následuje adresa adresáta, zařízení, pro které je správa určena.
 Pokud je tato adresa rovna 0xFF, jedná se o~broadcastovou zprávu. To znamená, že ji přijmou všechna zařízení, odpovědět na ni však může pouze jedno.
 Na třetí pozici je adresa odesílatele zprávy.
-Na pozici čtvrté je číslo příkazu, ten říká zařízení jak má se správou naložit.
+Na pozici čtvrté je číslo příkazu, ten říká zařízení, jak má se správou naložit.
 Následuje byte určující počet datových bytů.
-Na poslední a předposlední pozici se nachází 16-bitové CRC.
+Na poslední a~předposlední pozici se nachází 16-bitové CRC.
 
-Datové byty přenáší parametry, pro příkaz určený čísle příkazu v~hlavičce.
+Datové byty přenáší parametry pro příkaz určený číslem příkazu v~hlavičce.
 To mohou být jak nastavovací hodnoty pro senzory, tak hodnoty vracené ze senzorů do řídící jednotky.
 
 \begin{figure}[h]
