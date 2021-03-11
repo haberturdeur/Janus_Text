@@ -10,7 +10,7 @@ Hlavní důvody pro toto rozhodnutí jsou:
 \end{itemize}
 
 \section{Protokol}
-Rozhodl jsem se nevyužít již existující protokol, nýbrž sepsat protokol vlastní, tak, aby byl jednoduchý a přizpůsobitelný mým potřebám.
+Rozhodl jsem se nevyužít již existující protokol, nýbrž sepsat protokol vlastní, tak, aby byl jednoduchý a~přizpůsobitelný mým potřebám.
 Více v~kapitole \ref{Protocol}.
 \section{Zpracované senzory}
 Senzory plánované pro implementaci do této sady zahrnují:
@@ -26,7 +26,7 @@ Kromě senzorů mají být součástí sady i další jednotky:
     \item Battery pack -- inteligentní baterie
     \item Co-processing unit -- přídavná výpočetní jednotka
     \item Rozbočovač -- v~případě potřeby možnost rozšířit sběrnici o~více zařízení
-    \item Buffer -- kombinace co-processing unit a rozbočovače
+    \item Buffer -- kombinace co-processing unit a~rozbočovače
 \end{itemize}
 \section{Procesory}
 
@@ -35,9 +35,9 @@ Některé z~důvodů:
 \begin{itemize}
     \item Built--in podpora pro RS-485 přímo v~UART driveru ESP32
     \item Built--in podpora CRC\footnote{Cyklický redundantní součet. Kontrolní prvek využívaný ke kontrole správnosti přijatých dat, běžně používaný mimo jiné na sběrnici 1-Wire, nebo protokolu Modbus.}
-    \item Kompletní podpora C++v14 a STL na rozdíl od běžně používaných ATMEGA čipů, používaných například v~Arduino deskách
-    \item Kompatibilita se spoustou rozhraní a sběrnic -- může sloužit jako převodník mezi ostatními sběrnicemi a Janus protocol/RS485
-    \item OTA -- možnost nahrávání programu přes internet\footnote{Snaha o~co nejjednodušší dodatečné opravy systému, kdy si senzory budou samy schopny dostahovat nejnovější firmware, a na obalu nebudou muset být vyvedené programovací konektory.}
-    \item WiFi a Bluetooth -- v~případě nutnosti bezdrátové komunikace
-    \item Kompatibilita s~Arduino\footnote{Přestože samotný kód protokolu nevyžaduje Arduino a je postaven čistě na ESP-IDF, je Arduino prostředí pro mnoho začátečníků přijemnější pro práci než většina ostatních. Jeho jednoduchost a kompatibilita s~jinými čipy však může zásadně limitovat jeho funkce, proto není obsluha protokolu napsaná právě v~něm.}
+    \item Kompletní podpora C++v14 a~STL na rozdíl od běžně používaných ATMEGA čipů, používaných například v~Arduino deskách
+    \item Kompatibilita se spoustou rozhraní a~sběrnic -- může sloužit jako převodník mezi ostatními sběrnicemi a~Janus protocol/RS485
+    \item OTA -- možnost nahrávání programu přes internet\footnote{Snaha o~co nejjednodušší dodatečné opravy systému, kdy si senzory budou samy schopny dostahovat nejnovější firmware, a~na obalu nebudou muset být vyvedené programovací konektory.}
+    \item WiFi a~Bluetooth -- v~případě nutnosti bezdrátové komunikace
+    \item Kompatibilita s~Arduino\footnote{Přestože samotný kód protokolu nevyžaduje Arduino a~je postaven čistě na ESP-IDF, je Arduino prostředí pro mnoho začátečníků přijemnější pro práci než většina ostatních. Jeho jednoduchost a~kompatibilita s~jinými čipy však může zásadně limitovat jeho funkce, proto není obsluha protokolu napsaná právě v~něm.}
 \end{itemize}

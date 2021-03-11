@@ -8,7 +8,7 @@ Další z~důvodů byla neexistence některých parametrů v~hlavičce Modbusov�
 
 Janus protocol je snaha o~vytvoření uživatelsky co nejpřívětivějšího a~zároveň robustního protokolu.
 Tento protokol je postavený z~velké části na Avakar protokolu\footnote{Avakar je protokol vytvořený Martinem Vejnárem pro potřeby Robotics Brno \cite{robotikabrno}.} \cite{avakar}.
-Přidává k~němu adresaci zpráv a CRC16.
+Přidává k~němu adresaci zpráv a~CRC16.
 
 
 \section{Základní specifikace}
@@ -22,7 +22,7 @@ Přidává k~němu adresaci zpráv a CRC16.
 Janus protocol používá 7-bytovou hlavičku následovanou datatovými byty, těch může být teoreticky až 255.
 Viz obrázek \ref{fig: Diagram protokolu}.
 
-Hlavička sestává ze startovacího bytu, ten je statický a má hodnotu vždy 0x80.
+Hlavička sestává ze startovacího bytu, ten je statický a~má hodnotu vždy 0x80.
 Následuje adresa adresáta, zařízení, pro které je správa určena.
 Pokud je tato adresa rovna 0xFF, jedná se o~broadcastovou zprávu. To znamená, že ji přijmou všechna zařízení, odpovědět na ni však může pouze jedno.
 Na třetí pozici je adresa odesílatele zprávy.
@@ -56,6 +56,6 @@ To mohou být jak nastavovací hodnoty pro senzory, tak hodnoty vracené ze senz
 %todo sjednotit jazyk a zvětšít písmo 
 
 
-Kompletní implementace protokolu pro ESP32 je dostupná na serveru Github \cite{protocol}. 
-
+Kompletní implementace protokolu pro ESP32 je dostupná na serveru Github \cite{protocol}.
+Ukázka kódu je obsažená v rámci příloh: \ref{fig:kod}.
 

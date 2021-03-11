@@ -1,9 +1,9 @@
 \chapter{Běžně používané sběrnice}
 Sběrnice dávají jednotlivým modulům možnost vzájemné komunikace.
-Často dochází k~záměně pojmu sběrnice a protokol, což je pochopitelné, neboť se mohu v~různých mírách překrývat.
+Často dochází k~záměně pojmu sběrnice a~protokol, což je pochopitelné, neboť se mohu v~různých mírách překrývat.
 Sběrnicí většinou rozumíme hardwarovou složku komunikace, ta definuje například počet vodičů, napěťové úrovně na těchto vodičích, atd.
 Protokolem pak rozumíme formát dat posílaných po sběrnicích.
-V~oboru amatérské stavby robotů se v~praxi používá několik sběrnic a protokolů pro získávání dat:
+V~oboru amatérské stavby robotů se v~praxi používá několik sběrnic a~protokolů pro získávání dat:
 \begin{itemize}
 	\item I$^{2}$C
 	\item UART
@@ -17,7 +17,7 @@ V~oboru amatérské stavby robotů se v~praxi používá několik sběrnic a pro
 \end{itemize}
 
 \section{I$^{2}$C}
-Snad nejpoužívanější sběrnice a protokol zároveň je I$^{2}$C \cite{nxp:UM10204},
+Snad nejpoužívanější sběrnice a~protokol zároveň je I$^{2}$C \cite{nxp:UM10204},
 také známá jako Inter-Intergrated Circuit\footnote{ Protože je značka I$^{2}$C chráněna, použili ostatní výrobci název TWI, jedná se o~prakticky stejnou sběrnici, pouze pod jiným názvem.}.
 Tato sběrnice byla vyvinuta firmou Philips primárně pro připojení periferií, které nevyžadovaly vysoké komunikační rychlosti.
 Sběrnice podporuje jak multi-master, tak multi-slave.
@@ -43,14 +43,14 @@ Maximální délka sběrnice je 1 metr na 100~kBd, sběrnice však nebyla design
 
 \section{UART}
 Další hojně používanou sběrnicí je UART, mezi amatérskou komunitou známá též jako sériová linka.
-UART ve skutečnosti není sběrnice jako taková, jedná se spíše o~něco mezi sběrnicí a protokolem.
-UART definuje pouze posílaná data (0 a 1), nikoli však způsob jejich posílání či napěťové úrovně sběrnice.
+UART ve skutečnosti není sběrnice jako taková, jedná se spíše o~něco mezi sběrnicí a~protokolem.
+UART definuje pouze posílaná data (0 a~1), nikoli však způsob jejich posílání či napěťové úrovně sběrnice.
 O~to se starají právě jednotlivé implementace\footnote{I přesto se dá UART používat sám o~sobě na TTL (Transistor-Transistor-Logic), v~tom případě je definice napěťových úrovní ponechána jednotlivým zařízením, což může způsobit vzájemnou nekompatibilitu.}.
 Nejběžněji používané implementace UARTu jsou:
 \subsection{RS-232} % (fold)
 RS-232 \cite{RS-232} je implementace UART.
-Používá napěťové úrovně +5~V~až +15~V~pro logickou 1 a --5~V~až --15~V   pro~logickou 0, toto platí pro vysílací část.
-Přijímací část přidává dvouvoltovou hysterezi kvůli rušení, což znamená +3~V~až +15~V~pro logickou 1 a --3~V~až --15~V~pro logickou 0.
+Používá napěťové úrovně +5~V~až +15~V~pro logickou 1 a~--5~V~až --15~V   pro~logickou 0, toto platí pro vysílací část.
+Přijímací část přidává dvouvoltovou hysterezi kvůli rušení, což znamená +3~V~až +15~V~pro logickou 1 a~--3~V~až --15~V~pro logickou 0.
 RS-232 potřebuje společnou GND.
 \begin{table}[h]
 		
@@ -66,12 +66,12 @@ RS-232 potřebuje společnou GND.
 % subsection RS-232 (end)
 \subsection{RS-485}\label{RS-485} % (fold)
 RS-485 \cite{RS-485} je další implementace UARTu.
-Nepoužívá ale napěťové úrovně oproti společné GND, nýbrž využívá rozdílu napětí na linkách A~a B, ten musí být alespoň 200~mV.
+Nepoužívá ale napěťové úrovně oproti společné GND, nýbrž využívá rozdílu napětí na linkách A~a~B, ten musí být alespoň 200~mV.
 To způsobuje několik věcí:
 \begin{itemize}
 	\item Pokud vedou obě linky podél sebe, nejlépe jsou-li kroucené, je prakticky nemožné komunikaci zarušit, což je v~prostředí motorů na robotu značná výhoda\footnote{Zároveň to výrazně zvyšuje maximální možnou délku linky, při nižších rychlostech až na 1200~m. Doporučení: rychlost [baud] * vzdálenost [m] $<$ +/- 10$^{8}$.}.  
 	\item Není potřeba společná GND.
-	\item Pro plný duplexní mód (jedna linka na vysílání a jedna na přijímání) je potřeba dvojnásobný počet vodičů, tedy 4.
+	\item Pro plný duplexní mód (jedna linka na vysílání a~jedna na přijímání) je potřeba dvojnásobný počet vodičů, tedy 4.
 \end{itemize}
 V~závislosti na použitém převodníku z~UART na RS-485 může být počet zařízení na sběrnici 32 nebo až 128.
 \begin{table}[h]
@@ -88,17 +88,17 @@ V~závislosti na použitém převodníku z~UART na RS-485 může být počet za�
 % subsection RS-485 (end)
 
 \section{SPI}
-SPI \cite{nxp:AN2847}, neboli Serial Peripherial Interface, je dvoukanálová synchronní multi-slave\footnote{Na sběrnici je naráz připojen pouze jeden master (řídící jednotka) a typem sběrnice omezené množství slave (řízených) zařízení.} sběrnice.
+SPI \cite{nxp:AN2847}, neboli Serial Peripherial Interface, je dvoukanálová synchronní multi-slave\footnote{Na sběrnici je naráz připojen pouze jeden master (řídící jednotka) a~typem sběrnice omezené množství slave (řízených) zařízení.} sběrnice.
 Pro komunikaci využívá 4 vodiče:
 \begin{itemize}
-	\item MOSI (Master Output Slave Input) -- výstup z~master a vstup do slave
-	\item MISO (Master Input Slave Output) -- výstup ze slave a vstup do master
+	\item MOSI (Master Output Slave Input) -- výstup z~master a~vstup do slave
+	\item MISO (Master Input Slave Output) -- výstup ze slave a~vstup do master
 	\item SCK -- hodinový signál
 	\item SS (Slave Select) -- tímto pinem nastavujeme, který slave je momentálně aktivní
 \end{itemize}
 Na straně masteru může pak díky tomu být počet použitých pinů větší (3~+~počet slave zařízení).
 
-Další možná konfigurace je tzv. Daisy-chain, kdy je  MOSI masteru připojeno na MOSI prvního slave zařízení a MISO prvního slave zařízení je připojeno na MOSI dalšího slave zařízení, až MISO posledního slave zařízení je připojeno na MISO masteru.
+Další možná konfigurace je tzv. Daisy-chain, kdy je  MOSI masteru připojeno na MOSI prvního slave zařízení a~MISO prvního slave zařízení je připojeno na MOSI dalšího slave zařízení, až MISO posledního slave zařízení je připojeno na MISO masteru.
 Tato konfigurace poskytuje snížení počtu vodičů, zároveň ale snižuje i~komunikační rychlost, protože informace od prvního slave zařízení musí obejít celý kruh, než se dostanou zpět k~master zařízení.
 
 Nespornou výhodou SPI je její rychlost.
@@ -107,7 +107,7 @@ Nevýhodou může být velký počet vodičů při použití standartního zapoj
 
 
 \section{1-Wire}
-1-Wire \cite{one-wire} je sběrnice (a protokol zároveň), která, jak již její název napovídá, potřebuje pouze jeden vodič.
+1-Wire \cite{one-wire} je sběrnice (a~protokol zároveň), která, jak již její název napovídá, potřebuje pouze jeden vodič.
 K~tomu potřebuje ještě společnou GND, ale i tak to jsou pouze 2~vodiče, které obsáhnou napájení i komunikaci\footnote{Sběrnici je možno provozovat i v třílinkovém módu.}.
 Této typologie se využívá třeba u~kontaktních přístupových čipů.
 Sběrnice je také poměrně známá pro svůj CRC součet, který umožňuje kontrolu odeslaných dat.
@@ -116,8 +116,8 @@ Každé zařízení na sběrnici má unikátní neměnnou adresu.
 
 
 \section{Nesběrnicová komunikace}
-Některé senzory nepotřebují posílat velké množství dat, a proto může být lepší nepoužít sběrnici. 
+Některé senzory nepotřebují posílat velké množství dat, a~proto může být lepší nepoužít sběrnici. 
 Příkladem takového senzoru může být třeba obyčejné tlačítko.
 Některé senzory zmíněné v~další kapitole také používájí tento způsob předávání dat.
-Hlavní problém tohoto řešení je především náročnost na čas procesoru a počet vodičů.
+Hlavní problém tohoto řešení je především náročnost na čas procesoru a~počet vodičů.
 
